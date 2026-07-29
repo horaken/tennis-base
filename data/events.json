@@ -1,0 +1,37 @@
+[
+  {
+    "id": "2026-07-25-arakawa-eight",
+    "date": "2026-07-25",
+    "title": "荒川エイト練習会",
+    "location": "荒川河川敷テニスコート",
+    "participants": "8名",
+    "practiceContents": ["サーブ練習", "ラリー練習"],
+    "comment": "基礎を意識しながら、サーブとラリーを練習しました。",
+    "photos": [],
+    "videos": [
+      {
+        "title": "練習動画",
+        "url": "https://example.com/videos/arakawa-2026-07-25"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "participant": "全体",
+        "title": "練習内容の振り返り",
+        "url": "https://example.com/ai-consultations/arakawa-2026-07-25"
+      }
+    ]
+  },
+  {
+    "id": "2026-07-19-basic-practice",
+    "date": "2026-07-19",
+    "title": "7月の基礎練習会",
+    "location": "○○テニスコート",
+    "participants": "-",
+    "practiceContents": ["ストローク", "サーブ"],
+    "comment": "ストロークとサーブを中心に、基礎練習を行いました。",
+    "photos": [],
+    "videos": [],
+    "aiConsultations": []
+  }
+]

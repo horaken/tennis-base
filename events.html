@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="tennis-base.net の開催記録一覧です。" />
+    <title>開催記録 | tennis-base.net</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="site-logo" href="index.html">tennis-base.net</a>
+        <nav aria-label="メインメニュー">
+          <ul class="nav-list">
+            <li><a aria-current="page" href="events.html">開催記録</a></li>
+            <li><a href="schedule.html">今後の予定</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section page-main">
+      <div class="container">
+        <p class="eyebrow">EVENTS</p>
+        <h1>開催記録</h1>
+        <p class="lead">これまでの開催内容を掲載しています。</p>
+        <div id="events-list" class="card-list" aria-live="polite">開催記録を読み込んでいます…</div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">&copy; <span id="current-year"></span> tennis-base.net</div>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>
