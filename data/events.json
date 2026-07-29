@@ -36,15 +36,34 @@
     "videos": [],
     "aiConsultations": []
   },
-    {
+  {
     "id": "20260729-01",
     "legacyIds": ["2", "2026-07-29-basic-practice"],
     "date": "2026-07-29",
     "title": "7月の基礎練習会",
     "location": "○○テニスコート",
-    "participants": "-",
-    "practiceContents": ["ストローク", "サーブ"],
-    "comment": "GitHub Pages公開テスト",
+    "participants": "8名",
+    "practiceContents": [
+      "ストローク",
+      "サーブ"
+    ],
+    "comment": "基礎練習を実施しました。",
+    "photos": [],
+    "videos": [],
+    "aiConsultations": []
+  },
+  {
+    "id": "20260729-02",
+    "legacyIds": [],
+    "date": "2026-07-29",
+    "title": "ゲーム形式練習会",
+    "location": "○○テニスコート",
+    "participants": "8名",
+    "practiceContents": [
+      "ダブルスゲーム",
+      "ポイント練習"
+    ],
+    "comment": "試合形式で実践練習しました。",
     "photos": [],
     "videos": [],
     "aiConsultations": []
