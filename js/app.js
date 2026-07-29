@@ -28,7 +28,7 @@ const createCard = (item, isSchedule = false) => {
   const participants = item.participants && item.participants !== "-"
     ? `<p class="event-participants">参加者：${escapeHtml(item.participants)}</p>`
     : "";
-  const detailUrl = `event.html?id=${encodeURIComponent(item.id)}`;
+  const detailUrl = `event-detail.html?id=${encodeURIComponent(item.id)}`;
 
   return `<article class="event-card"><p class="event-meta"><a href="${detailUrl}">${escapeHtml(meta)}</a></p><h3><a class="card-title-link" href="${detailUrl}">${escapeHtml(item.title)}</a></h3>${participants}<p class="event-description">${escapeHtml(item.comment)}</p></article>`;
 };
