@@ -1,6 +1,7 @@
 [
   {
-    "id": "2026-07-25-arakawa-eight",
+    "id": "20260725-01",
+    "legacyIds": ["0", "2026-07-25-arakawa-eight"],
     "date": "2026-07-25",
     "title": "荒川エイト練習会",
     "location": "荒川河川敷テニスコート",
@@ -23,7 +24,8 @@
     ]
   },
   {
-    "id": "2026-07-19-basic-practice",
+    "id": "20260719-01",
+    "legacyIds": ["1", "2026-07-19-basic-practice"],
     "date": "2026-07-19",
     "title": "7月の基礎練習会",
     "location": "○○テニスコート",
@@ -35,7 +37,8 @@
     "aiConsultations": []
   },
     {
-    "id": "2026-07-29-basic-practice",
+    "id": "20260729-01",
+    "legacyIds": ["2", "2026-07-29-basic-practice"],
     "date": "2026-07-29",
     "title": "7月の基礎練習会",
     "location": "○○テニスコート",

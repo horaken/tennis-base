@@ -49,6 +49,24 @@ const renderItems = async (url, targetId, isSchedule = false, limit) => {
   }
 };
 
+const renderLatestEvents = async () => {
+  const target = document.getElementById("latest-event");
+  if (!target) return;
+  try {
+    const response = await fetch("data/events.json");
+    if (!response.ok) throw new Error("Failed to load data");
+    const items = await response.json();
+    const latestDate = items.reduce((latest, item) => item.date > latest ? item.date : latest, "");
+    const latestEvents = items.filter((item) => item.date === latestDate);
+
+    target.innerHTML = latestEvents.length
+      ? `<p class="event-meta">${escapeHtml(formatDate(latestDate))}</p><ul class="detail-link-list">${latestEvents.map((item) => `<li><a href="event-detail.html?id=${encodeURIComponent(item.id)}">${escapeHtml(item.title)}</a></li>`).join("")}</ul>`
+      : '<p class="empty-message">現在掲載中の情報はありません。</p>';
+  } catch (error) {
+    target.innerHTML = '<p class="empty-message">情報を読み込めませんでした。時間をおいて再度お試しください。</p>';
+  }
+};
+
 const listLinks = (items, label) => items.length
   ? `<ul class="detail-link-list">${items.map((item) => `<li>${externalLink(item.url, item.participant ? `${item.participant}：${item.title}` : item.title)}</li>`).join("")}</ul>`
   : `<p class="empty-message">${label}はまだありません。</p>`;
@@ -61,7 +79,7 @@ const renderEventDetail = async () => {
     const response = await fetch("data/events.json");
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
-    const item = items.find((event) => event.id === eventId);
+    const item = items.find((event) => event.id === eventId || (event.legacyIds ?? []).includes(eventId));
     if (!item) throw new Error("Event not found");
 
     const photos = item.photos ?? [];
@@ -80,7 +98,7 @@ const renderEventDetail = async () => {
 };
 
 document.getElementById("current-year").textContent = new Date().getFullYear();
-renderItems("data/events.json", "latest-event", false, 1);
+renderLatestEvents();
 renderItems("data/events.json", "events-list");
 renderItems("data/schedule.json", "schedule-list", true);
 renderEventDetail();
