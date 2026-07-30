@@ -3,70 +3,48 @@
     "id": "20260725-01",
     "legacyIds": ["0", "2026-07-25-arakawa-eight"],
     "date": "2026-07-25",
-    "title": "荒川エイト練習会",
-    "location": "荒川河川敷テニスコート",
-    "participants": "8名",
-    "practiceContents": ["サーブ練習", "ラリー練習"],
-    "comment": "基礎を意識しながら、サーブとラリーを練習しました。",
+    "title": "初中級レベルからの基礎練習会",
+    "location": "荒川砂町庭球場",
+    "participants": "5名",
+    "practiceContents": ["サーブ練習", "ストローク練習", "ボレー練習"],
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。",
     "photos": [],
     "videos": [
       {
-        "title": "練習動画",
-        "url": "https://example.com/videos/arakawa-2026-07-25"
+        "title": "サーブ動画",
+        "url": "https://vimeo.com/1212858722"
       }
     ],
     "aiConsultations": [
       {
         "participant": "全体",
-        "title": "練習内容の振り返り",
-        "url": "https://example.com/ai-consultations/arakawa-2026-07-25"
+        "title": "サーブ練習のＡＩ診断",
+        "url": "https://share.gemini.google/MuhocwsHrxtD"
       }
     ]
   },
   {
-    "id": "20260719-01",
-    "legacyIds": ["1", "2026-07-19-basic-practice"],
-    "date": "2026-07-19",
-    "title": "7月の基礎練習会",
-    "location": "○○テニスコート",
-    "participants": "-",
-    "practiceContents": ["ストローク", "サーブ"],
-    "comment": "ストロークとサーブを中心に、基礎練習を行いました。",
+    "id": "20260726-01",
+    "legacyIds": ["1", "2026-07-26-basic-practice"],
+    "date": "2026-07-26",
+    "title": "サーブ＆レシーブ 自由練習会",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": ["サーブ練習", "レシーブ練習"],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。",
     "photos": [],
-    "videos": [],
-    "aiConsultations": []
-  },
-  {
-    "id": "20260729-01",
-    "legacyIds": ["2", "2026-07-29-basic-practice"],
-    "date": "2026-07-29",
-    "title": "7月の基礎練習会",
-    "location": "○○テニスコート",
-    "participants": "8名",
-    "practiceContents": [
-      "ストローク",
-      "サーブ"
+    "videos": [
+      {
+        "title": "サーブ動画",
+        "url": "https://vimeo.com/1212976843"
+      }
     ],
-    "comment": "基礎練習を実施しました。",
-    "photos": [],
-    "videos": [],
-    "aiConsultations": []
-  },
-  {
-    "id": "20260729-02",
-    "legacyIds": [],
-    "date": "2026-07-29",
-    "title": "ゲーム形式練習会",
-    "location": "○○テニスコート",
-    "participants": "8名",
-    "practiceContents": [
-      "ダブルスゲーム",
-      "ポイント練習"
-    ],
-    "comment": "試合形式で実践練習しました。",
-    "photos": [],
-    "videos": [],
-    "aiConsultations": []
+    "aiConsultations": [
+      {
+        "participant": "全体",
+        "title": "サーブ練習のＡＩ診断",
+        "url": "https://share.gemini.google/AtGXUUyGpGr9"
+      }
+    ]
   }
-
 ]
