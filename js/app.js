@@ -56,11 +56,12 @@ const renderLatestEvents = async () => {
     const response = await fetch("data/events.json");
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
-    const latestDate = items.reduce((latest, item) => item.date > latest ? item.date : latest, "");
-    const latestEvents = items.filter((item) => item.date === latestDate);
+    const latestEvents = [...items]
+      .sort((first, second) => second.date.localeCompare(first.date))
+      .slice(0, 5);
 
     target.innerHTML = latestEvents.length
-      ? `<p class="event-meta">${escapeHtml(formatDate(latestDate))}</p><ul class="detail-link-list">${latestEvents.map((item) => `<li><a href="event-detail.html?id=${encodeURIComponent(item.id)}">${escapeHtml(item.title)}</a></li>`).join("")}</ul>`
+      ? latestEvents.map((item) => createCard(item)).join("")
       : '<p class="empty-message">現在掲載中の情報はありません。</p>';
   } catch (error) {
     target.innerHTML = '<p class="empty-message">情報を読み込めませんでした。時間をおいて再度お試しください。</p>';
