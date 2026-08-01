@@ -46,5 +46,29 @@
         "url": "https://share.gemini.google/AtGXUUyGpGr9"
       }
     ]
+  },
+  {
+    "id": "20260801-01",
+    "legacyIds": ["1", "2026-08-01自由練習"],
+    "date": "2026-08-01",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": ["サーブ練習", "レシーブ練習"],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。",
+    "photos": [],
+    "videos": [
+      {
+        "title": "サーブ動画",
+        "url": "https://vimeo.com/1214747407"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "participant": "全体",
+        "title": "サーブ練習のＡＩ診断",
+        "url": "https://share.gemini.google/nm1djOFfVumo"
+      }
+    ]
   }
 ]
