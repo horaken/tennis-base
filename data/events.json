@@ -7,7 +7,7 @@
     "location": "荒川砂町庭球場",
     "participants": "5名",
     "practiceContents": ["サーブ練習", "ストローク練習", "ボレー練習"],
-    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「Ina」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "photos": [],
     "videos": [
       {
@@ -17,8 +17,8 @@
     ],
     "aiConsultations": [
       {
-        "participant": "全体",
-        "title": "サーブ練習のＡＩ診断",
+        "participant": "",
+        "title": "サーブ動画のＡＩ診断",
         "url": "https://share.gemini.google/MuhocwsHrxtD"
       }
     ]
@@ -31,7 +31,7 @@
     "location": "荒川砂町庭球場",
     "participants": "10名",
     "practiceContents": ["サーブ練習", "レシーブ練習"],
-    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ケイン」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "photos": [],
     "videos": [
       {
@@ -41,8 +41,8 @@
     ],
     "aiConsultations": [
       {
-        "participant": "全体",
-        "title": "サーブ練習のＡＩ診断",
+        "participant": "",
+        "title": "サーブ動画のＡＩ診断",
         "url": "https://share.gemini.google/AtGXUUyGpGr9"
       }
     ]
@@ -55,7 +55,7 @@
     "location": "荒川砂町庭球場",
     "participants": "10名",
     "practiceContents": ["サーブ練習", "レシーブ練習"],
-    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「おおつか」をＡＩが選出しました。詳細は、リンクでご確認ください。",
     "photos": [],
     "videos": [
       {
@@ -65,8 +65,8 @@
     ],
     "aiConsultations": [
       {
-        "participant": "全体",
-        "title": "サーブ練習のＡＩ診断",
+        "participant": "",
+        "title": "サーブ動画のＡＩ診断",
         "url": "https://share.gemini.google/nm1djOFfVumo"
       }
     ]
