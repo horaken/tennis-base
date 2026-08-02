@@ -80,19 +80,15 @@ const renderEventDetail = async () => {
     const response = await fetch("data/events.json");
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
-    const item = items.find((event) => event.id === eventId || (event.legacyIds ?? []).includes(eventId));
+    const item = items.find((event) => event.id === eventId);
     if (!item) throw new Error("Event not found");
 
-    const photos = item.photos ?? [];
     const videos = item.videos ?? [];
     const consultations = item.aiConsultations ?? [];
     const practices = item.practiceContents ?? [];
-    const photoContent = photos.length
-      ? `<div class="photo-grid">${photos.map((photo) => `<img src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.alt || item.title)}" />`).join("")}</div>`
-      : '<p class="empty-message">写真は準備中です。</p>';
 
     document.title = `${item.title} | tennis-base.net`;
-    target.innerHTML = `<p class="eyebrow">EVENT DETAIL</p><p class="event-meta">${escapeHtml(formatDate(item.date))}</p><h1>${escapeHtml(item.title)}</h1><dl class="detail-list"><div><dt>開催場所</dt><dd>${escapeHtml(item.location)}</dd></div><div><dt>参加者</dt><dd>${escapeHtml(item.participants)}</dd></div></dl><section class="detail-section"><h2>練習内容</h2>${practices.length ? `<ul>${practices.map((practice) => `<li>${escapeHtml(practice)}</li>`).join("")}</ul>` : '<p>記録はありません。</p>'}</section><section class="detail-section"><h2>コメント</h2><p>${escapeHtml(item.comment)}</p></section><section class="detail-section"><h2>写真</h2>${photoContent}</section><section class="detail-section"><h2>動画リンク</h2>${listLinks(videos, "動画")}</section><section class="detail-section"><h2>AI相談結果</h2>${listLinks(consultations, "AI相談結果")}</section><p><a class="text-link" href="events.html">← 開催記録一覧へ戻る</a></p>`;
+    target.innerHTML = `<p class="eyebrow">EVENT DETAIL</p><p class="event-meta">${escapeHtml(formatDate(item.date))}</p><h1>${escapeHtml(item.title)}</h1><dl class="detail-list"><div><dt>開催場所</dt><dd>${escapeHtml(item.location)}</dd></div><div><dt>参加者</dt><dd>${escapeHtml(item.participants)}</dd></div></dl><section class="detail-section"><h2>練習内容</h2>${practices.length ? `<ul>${practices.map((practice) => `<li>${escapeHtml(practice)}</li>`).join("")}</ul>` : '<p>記録はありません。</p>'}</section><section class="detail-section"><h2>コメント</h2><p>${escapeHtml(item.comment)}</p></section><section class="detail-section"><h2>動画リンク</h2>${listLinks(videos, "動画")}</section><section class="detail-section"><h2>AI相談結果</h2>${listLinks(consultations, "AI相談結果")}</section><p><a class="text-link" href="events.html">← 開催記録一覧へ戻る</a></p>`;
   } catch (error) {
     target.innerHTML = '<p class="empty-message">開催情報が見つかりませんでした。</p><p><a class="text-link" href="events.html">開催記録一覧へ戻る</a></p>';
   }
