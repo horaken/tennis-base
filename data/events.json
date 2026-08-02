@@ -70,5 +70,53 @@
         "url": "https://share.gemini.google/nm1djOFfVumo"
       }
     ]
+  },
+  {
+    "id": "20260802-01",
+    "legacyIds": ["1", "2026-08-02自由練習"],
+    "date": "2026-08-02",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": ["サーブ練習", "レシーブ練習"],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Ma-no」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
+    "photos": [],
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1214927311"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "participant": "",
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/UW5U4WkAnjtq"
+      }
+    ]
+  },
+  {
+    "id": "20260802-01",
+    "legacyIds": ["2", "2026-08-02-arakawa-eight"],
+    "date": "2026-08-02",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "8名",
+    "practiceContents": ["サーブ練習", "ストローク練習", "ボレー練習"],
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「yosuke」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "photos": [],
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1214927427"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "participant": "",
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/OS85AMNHSWvm"
+      }
+    ]
   }
 ]
