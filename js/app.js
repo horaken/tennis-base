@@ -54,7 +54,9 @@ const renderLatestEvents = async () => {
   const target = document.getElementById("latest-event");
   if (!target) return;
   try {
-    const response = await fetch("data/events.json");
+    const jsonUrl = "data/events.json";
+    console.log("取得URL:", jsonUrl);
+    const response = await fetch(jsonUrl);
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
     const latestEvents = [...items]
