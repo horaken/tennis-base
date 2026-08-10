@@ -1,6 +1,7 @@
 // data フォルダの JSON を読み込み、各ページに表示します。
 const formatDate = (dateString) => {
-  const date = new Date(`${dateString}T00:00:00`);
+  const date = new Date(dateString);
+
   return new Intl.DateTimeFormat("ja-JP", {
     year: "numeric",
     month: "long",
@@ -8,7 +9,6 @@ const formatDate = (dateString) => {
     weekday: "short"
   }).format(date);
 };
-
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;"
 })[character]);
