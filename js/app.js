@@ -83,7 +83,7 @@ const renderEventDetail = async () => {
   if (!target) return;
   const eventId = new URLSearchParams(window.location.search).get("id");
   try {
-    const response = await fetch("data/events.json");
+    const response = await fetch("/tennis-base/data/events.json");
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
     const item = items.find((event) => event.id === eventId);
