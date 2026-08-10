@@ -59,8 +59,15 @@ const renderLatestEvents = async () => {
     const jsonUrl = "data/events.json?v=" + Date.now();
     console.log("取得URL:", jsonUrl);
     const response = await fetch(jsonUrl);
-    if (!response.ok) throw new Error("Failed to load data");
-    const items = await response.json();
+
+    console.log("HTTP status:", response.status);
+
+    const text = await response.text();
+
+    console.log("JSON文字数:", text.length);
+    console.log("JSON先頭:", text.substring(0, 100));
+
+    const items = JSON.parse(text);
     const latestEvents = [...items]
       .sort((first, second) => second.date.localeCompare(first.date))
       .slice(0, 5);
