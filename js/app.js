@@ -41,6 +41,8 @@ const renderItems = async (url, targetId, isSchedule = false, limit) => {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
+    console.log("取得件数:", items.length);
+    console.log("先頭データ:", items[0]);
     const displayedItems = limit ? items.slice(0, limit) : items;
     target.innerHTML = displayedItems.length
       ? displayedItems.map((item) => createCard(item, isSchedule)).join("")
