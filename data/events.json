@@ -216,5 +216,29 @@
         "url": ""
       }
     ]
+  },
+  {
+    "id": "20260810-02",
+    "date": "2026-08-09T15:00:00.000Z",
+    "title": "仮のタイトル",
+    "location": "仮の場所",
+    "participants": "10名",
+    "practiceContents": [
+      "サーブ練習",
+      "レシーブ練習"
+    ],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「daizoon」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1216742603"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/EZCa7hHeJBsx"
+      }
+    ]
   }
 ]
