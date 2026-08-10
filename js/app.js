@@ -40,15 +40,19 @@ const renderItems = async (url, targetId, isSchedule = false, limit) => {
   const target = document.getElementById(targetId);
   if (!target) return;
   try {
-    const response = await fetch(url);
+    const response = await fetch(`${url}?v=${Date.now()}`);
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
+    console.log("取得件数:", items.length);
+    console.log("先頭データ:", items[0]);
     const displayedItems = limit ? items.slice(0, limit) : items;
     target.innerHTML = displayedItems.length
       ? displayedItems.map((item) => createCard(item, isSchedule)).join("")
       : '<p class="empty-message">現在掲載中の情報はありません。</p>';
   } catch (error) {
-    target.innerHTML = '<p class="empty-message">情報を読み込めませんでした。時間をおいて再度お試しください。</p>';
+    console.error("renderLatestEvents error:", error);
+    target.innerHTML =
+      '<p class="empty-message">情報を読み込めませんでした。</p>';
   }
 };
 
@@ -56,12 +60,23 @@ const renderLatestEvents = async () => {
   const target = document.getElementById("latest-event");
   if (!target) return;
   try {
-    const response = await fetch("data/events.json");
-    if (!response.ok) throw new Error("Failed to load data");
-    const items = await response.json();
+    const jsonUrl = "data/events.json?v=" + Date.now();
+    console.log("取得URL:", jsonUrl);
+    const response = await fetch(jsonUrl);
+
+    console.log("HTTP status:", response.status);
+
+    const text = await response.text();
+
+    console.log("JSON文字数:", text.length);
+    console.log("JSON先頭:", text.substring(0, 100));
+
+    const items = JSON.parse(text);
     const latestEvents = [...items]
       .sort((first, second) => second.date.localeCompare(first.date))
       .slice(0, 5);
+
+    console.log("最新5件:", latestEvents);
 
     target.innerHTML = latestEvents.length
       ? latestEvents.map((item) => createCard(item)).join("")
@@ -83,7 +98,7 @@ const renderEventDetail = async () => {
   if (!target) return;
   const eventId = new URLSearchParams(window.location.search).get("id");
   try {
-    const response = await fetch("data/events.json");
+    const response = await fetch("data/events.json?v=" + Date.now());
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
     const item = items.find((event) => event.id === eventId);
@@ -120,7 +135,11 @@ const renderEventDetail = async () => {
   }
 };
 
-document.getElementById("current-year").textContent = new Date().getFullYear();
+const yearElement = document.getElementById("current-year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 renderLatestEvents();
 renderItems("data/events.json", "events-list");
 renderItems("data/schedule.json", "schedule-list", true);
