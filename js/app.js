@@ -72,6 +72,8 @@ const renderLatestEvents = async () => {
       .sort((first, second) => second.date.localeCompare(first.date))
       .slice(0, 5);
 
+    console.log("最新5件:", latestEvents);
+
     target.innerHTML = latestEvents.length
       ? latestEvents.map((item) => createCard(item)).join("")
       : '<p class="empty-message">現在掲載中の情報はありません。</p>';
