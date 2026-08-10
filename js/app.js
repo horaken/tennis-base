@@ -38,7 +38,7 @@ const renderItems = async (url, targetId, isSchedule = false, limit) => {
   const target = document.getElementById(targetId);
   if (!target) return;
   try {
-    const response = await fetch(url);
+    const response = await fetch(`${url}?v=${Date.now()}`);
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
     console.log("取得件数:", items.length);
@@ -56,7 +56,7 @@ const renderLatestEvents = async () => {
   const target = document.getElementById("latest-event");
   if (!target) return;
   try {
-    const jsonUrl = "data/events.json";
+    const jsonUrl = "data/events.json?v=" + Date.now();
     console.log("取得URL:", jsonUrl);
     const response = await fetch(jsonUrl);
     if (!response.ok) throw new Error("Failed to load data");
@@ -85,7 +85,7 @@ const renderEventDetail = async () => {
   if (!target) return;
   const eventId = new URLSearchParams(window.location.search).get("id");
   try {
-    const response = await fetch("/tennis-base/data/events.json");
+    const response = await fetch("data/events.json?v=" + Date.now());
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
     const item = items.find((event) => event.id === eventId);
