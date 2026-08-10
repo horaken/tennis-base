@@ -129,7 +129,11 @@ const renderEventDetail = async () => {
   }
 };
 
-document.getElementById("current-year").textContent = new Date().getFullYear();
+const yearElement = document.getElementById("current-year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 renderLatestEvents();
 renderItems("data/events.json", "events-list");
 renderItems("data/schedule.json", "schedule-list", true);
