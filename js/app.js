@@ -18,6 +18,8 @@ const externalLink = (url, label) => url
   : "";
 
 const createCard = (item, isSchedule = false) => {
+  console.log("createCard:", item);
+
   const meta = isSchedule
     ? `${formatDate(item.date)} ${item.time} ｜ ${item.location}`
     : `${formatDate(item.date)} ｜ ${item.location}`;
