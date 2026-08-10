@@ -48,7 +48,9 @@ const renderItems = async (url, targetId, isSchedule = false, limit) => {
       ? displayedItems.map((item) => createCard(item, isSchedule)).join("")
       : '<p class="empty-message">現在掲載中の情報はありません。</p>';
   } catch (error) {
-    target.innerHTML = '<p class="empty-message">情報を読み込めませんでした。時間をおいて再度お試しください。</p>';
+    console.error("renderLatestEvents error:", error);
+    target.innerHTML =
+      '<p class="empty-message">情報を読み込めませんでした。</p>';
   }
 };
 
