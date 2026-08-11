@@ -106,7 +106,9 @@ const renderEventDetail = async () => {
 
     const videos = (item.videos ?? []).filter((video) => video?.url);
     const consultations = (item.aiConsultations ?? []).filter((consultation) => consultation?.url);
-    const practices = (item.practiceContents ?? []).filter(Boolean);
+    const practices = Array.isArray(item.practiceContents)
+      ? item.practiceContents
+      : (item.practiceContents ? item.practiceContents.split(",") : []);
     const location = item.location?.trim();
     const participants = item.participants?.trim();
     const comment = item.comment?.trim();
