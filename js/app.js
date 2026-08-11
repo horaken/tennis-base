@@ -130,8 +130,10 @@ const renderEventDetail = async () => {
 
     document.title = `${item.title} | tennis-base.net`;
     target.innerHTML = `<p class="eyebrow">EVENT DETAIL</p><p class="event-meta">${escapeHtml(formatDate(item.date))}</p><h1>${escapeHtml(item.title)}</h1>${details ? `<dl class="detail-list">${details}</dl>` : ""}${practiceSection}${commentSection}${videoSection}${consultationSection}<p><a class="text-link" href="events.html">← 開催記録一覧へ戻る</a></p>`;
-  } catch (error) {
-    target.innerHTML = '<p class="empty-message">開催情報が見つかりませんでした。</p><p><a class="text-link" href="events.html">開催記録一覧へ戻る</a></p>';
+  } 
+  catch (error) {
+    console.error("詳細表示エラー:", error);
+    target.innerHTML = '<p class="empty-message">開催情報が見つかりませんでした。</p>';
   }
 };
 
