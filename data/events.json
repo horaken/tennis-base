@@ -213,5 +213,27 @@
         "url": "https://share.gemini.google/NAGtjJpKmq6D"
       }
     ]
+  },
+  {
+    "id": "20260815-01",
+    "date": "2026-08-15",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "サーブ練習,レシーブ練習",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「たっつん」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "https://vimeo.com/1218460953"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "https://share.gemini.google/y4xAFw5NyxyG"
+      }
+    ]
   }
+]
 ]
