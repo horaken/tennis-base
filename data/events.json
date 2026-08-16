@@ -225,15 +225,14 @@
     "videos": [
       {
         "title": "サーブ動画(Vimeo)",
-        "url":"https://vimeo.com/1218460953"
+        "url": "https://vimeo.com/1218460953"
       }
     ],
     "aiConsultations": [
       {
         "title": "サーブ動画のＡＩ診断(Gemini)",
-        "url":"https://share.gemini.google/y4xAFw5NyxyG"
+        "url": "https://share.gemini.google/y4xAFw5NyxyG"
       }
     ]
   }
 ]
-
