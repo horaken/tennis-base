@@ -234,5 +234,26 @@
         "url": "https://share.gemini.google/y4xAFw5NyxyG"
       }
     ]
+  },
+  {
+    "id": "20260816-01",
+    "date": "2026-08-16",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
+    "location": "荒川砂町庭球場",
+    "participants": "8名",
+    "practiceContents": "\"サーブ練習\",\"ストローク練習\", \"ボレー練習\"",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「パール」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1218603382"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/u6cREV2XFzZb"
+      }
+    ]
   }
 ]
