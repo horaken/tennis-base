@@ -54,12 +54,40 @@ h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); }
   box-shadow: 0 2px 8px rgb(21 51 74 / 3%);
 }
 
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.filter-label {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  padding: 5px 12px;
+  font-size: .8rem;
+  font-weight: 800;
+  color: var(--navy);
+  background: #edf3f7;
+  border-radius: 6px;
+  letter-spacing: .05em;
+}
+
+.filter-divider {
+  height: 1px;
+  margin: 12px 0;
+  background: #edf2f5;
+}
+
 .tabs-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
 }
+
 
 .tab-btn {
   display: inline-flex;
@@ -342,9 +370,15 @@ h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); }
   .section { padding: 44px 0; }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
   .events-filter-wrapper { padding: 12px 14px; }
-  .tab-btn { padding: 6px 12px; font-size: .85rem; }
+  .filter-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .filter-label { min-width: auto; padding: 3px 8px; font-size: .75rem; }
+  .tabs-nav { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .tabs-nav::-webkit-scrollbar { height: 4px; }
+  .tabs-nav::-webkit-scrollbar-thumb { background: #d4e0e8; border-radius: 4px; }
+  .tab-btn { padding: 6px 12px; font-size: .85rem; flex-shrink: 0; }
   .events-summary-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
   .event-card { padding: 18px; }
   .event-card-title { font-size: 1.1rem; }
 }
+
 
