@@ -36,6 +36,20 @@ const createCard = (item, isSchedule = false) => {
   return `<article class="event-card"><p class="event-meta"><a href="${detailUrl}">${escapeHtml(meta)}</a></p><h3><a class="card-title-link" href="${detailUrl}">${escapeHtml(item.title)}</a></h3>${participants}${comment}</article>`;
 };
 
+const groupItemsByYearMonth = (items) => {
+  const groups = {};
+  items.forEach(item => {
+    if (!item.date) return;
+    const date = new Date(item.date);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    if (!groups[year]) groups[year] = {};
+    if (!groups[year][month]) groups[year][month] = [];
+    groups[year][month].push(item);
+  });
+  return groups;
+};
+
 const renderItems = async (url, targetId, isSchedule = false, limit) => {
   const target = document.getElementById(targetId);
   if (!target) return;
@@ -43,18 +57,88 @@ const renderItems = async (url, targetId, isSchedule = false, limit) => {
     const response = await fetch(`${url}?v=${Date.now()}`);
     if (!response.ok) throw new Error("Failed to load data");
     const items = await response.json();
-    console.log("取得件数:", items.length);
-    console.log("先頭データ:", items[0]);
-    const displayedItems = limit ? items.slice(0, limit) : items;
-    target.innerHTML = displayedItems.length
-      ? displayedItems.map((item) => createCard(item, isSchedule)).join("")
-      : '<p class="empty-message">現在掲載中の情報はありません。</p>';
+    
+
+
+        // 日付順にソート（date が無いデータは後ろへ）
+    items.sort((a, b) => {
+      if (!a.date) return 1;
+      if (!b.date) return -1;
+      return b.date.localeCompare(a.date);
+    });
+
+
+    if (!items.length) {
+      target.innerHTML = '<p class="empty-message">現在掲載中の情報はありません。</p>';
+      return;
+    }
+
+    if (isSchedule) {
+      const displayedItems = limit ? items.slice(0, limit) : items;
+      target.innerHTML = displayedItems.map((item) => createCard(item, isSchedule)).join("");
+      return;
+    }
+
+    // --- 開催記録（events）向けの年月グループ化表示 ---
+    const groups = groupItemsByYearMonth(items);
+    const years = Object.keys(groups).sort((a, b) => b - a);
+
+    // 1. タブの生成
+    let html = `<div class="year-tabs" style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 1px solid #ddd; padding-bottom: 10px; flex-wrap: wrap;">`;
+    years.forEach((year, index) => {
+      const isActive = index === 0;
+      html += `<button class="tab-btn ${isActive ? 'active' : ''}" data-year="${year}" 
+                style="padding: 10px 20px; cursor: pointer; border: none; font-weight: bold;
+                background: ${isActive ? '#2c3e50' : '#f1f1f1'}; 
+                color: ${isActive ? '#fff' : '#333'}; 
+                border-radius: 4px 4px 0 0; transition: all 0.3s;">${year}年</button>`;
+    });
+    html += `</div>`;
+
+    // 2. 各年のコンテンツ生成
+    years.forEach((year, index) => {
+      html += `<div id="year-section-${year}" class="year-section" style="display: ${index === 0 ? 'block' : 'none'};">`;
+      
+      const months = Object.keys(groups[year]).sort((a, b) => b - a);
+      months.forEach(month => {
+        html += `<h2 class="month-title" style="margin: 40px 0 20px; border-left: 5px solid #2c3e50; padding: 5px 15px; background: #f8f9fa; font-size: 1.25rem;">${month}月</h2>`;
+        html += `<div class="card-list">`; // app.js 外部の CSS クラスを使用
+        html += groups[year][month].map(item => createCard(item)).join("");
+        html += `</div>`;
+      });
+      
+      html += `</div>`;
+    });
+
+    target.innerHTML = html;
+
+    // 3. タブ切り替えイベントの設定
+    target.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const year = e.target.dataset.year;
+        // 表示切り替え
+        target.querySelectorAll('.year-section').forEach(s => s.style.display = 'none');
+        const selectedSection = target.querySelector(`#year-section-${year}`);
+        if (selectedSection) selectedSection.style.display = 'block';
+        
+        // タブ色変更
+        target.querySelectorAll('.tab-btn').forEach(b => {
+          b.style.background = '#f1f1f1';
+          b.style.color = '#333';
+          b.classList.remove('active');
+        });
+        e.target.style.background = '#2c3e50';
+        e.target.style.color = '#fff';
+        e.target.classList.add('active');
+      });
+    });
+
   } catch (error) {
-    console.error("renderLatestEvents error:", error);
-    target.innerHTML =
-      '<p class="empty-message">情報を読み込めませんでした。</p>';
+    console.error("renderItems error:", error);
+    target.innerHTML = '<p class="empty-message">情報を読み込めませんでした。</p>';
   }
 };
+
 
 const renderLatestEvents = async () => {
   const target = document.getElementById("latest-event");

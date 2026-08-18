@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="tennis-base.net の開催記録一覧です。" />
+    <meta name="description" content="tennis-base.net の開催記録一覧です。年月別のタブ切り替えで過去の練習記録、動画、AI診断結果をご覧いただけます。" />
     <title>開催記録 | tennis-base.net</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -22,9 +22,19 @@
 
     <main class="section page-main">
       <div class="container">
-        <p class="eyebrow">EVENTS</p>
-        <h1>開催記録</h1>
-        <p class="lead">これまでの開催内容を掲載しています。動画やＡＩ診断結果を下記リンクからご確認頂けます。</p>
+        <div class="page-heading-group">
+          <p class="eyebrow">EVENTS</p>
+          <h1>開催記録</h1>
+          <p class="lead">これまでの開催内容を掲載しています。年月タブで切り替えて、練習内容・動画・ＡＩ診断結果をご確認いただけます。</p>
+        </div>
+
+        <!-- 年月タブフィルター -->
+        <div id="events-filter-wrapper" class="events-filter-wrapper" aria-label="開催年月の選択"></div>
+
+        <!-- 選択中ステータスバー -->
+        <div id="events-summary-bar" class="events-summary-bar" aria-live="polite"></div>
+
+        <!-- 開催記録カード一覧 -->
         <div id="events-list" class="card-list" aria-live="polite">開催記録を読み込んでいます…</div>
       </div>
     </main>
@@ -35,3 +45,4 @@
     <script src="js/app.js"></script>
   </body>
 </html>
+
