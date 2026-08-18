@@ -22,9 +22,19 @@
 
     <main class="section page-main">
       <div class="container">
-        <p class="eyebrow">SCHEDULE</p>
-        <h1>今後の開催予定</h1>
-        <p class="lead">参加をご希望の方は、各予定の案内をご確認ください。</p>
+        <div class="page-heading-group">
+          <p class="eyebrow">SCHEDULE</p>
+          <h1>今後の開催予定</h1>
+          <p class="lead">今後の開催予定を掲載しています。年月タブで切り替えて、日程・時間・開催場所をご確認いただけます。</p>
+        </div>
+
+        <!-- 年月タブフィルター -->
+        <div id="schedule-filter-wrapper" class="events-filter-wrapper" aria-label="開催年月の選択"></div>
+
+        <!-- 選択中ステータスバー -->
+        <div id="schedule-summary-bar" class="events-summary-bar" aria-live="polite"></div>
+
+        <!-- 開催予定カード一覧 -->
         <div id="schedule-list" class="card-list" aria-live="polite">開催予定を読み込んでいます…</div>
       </div>
     </main>

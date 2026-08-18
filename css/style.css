@@ -250,6 +250,12 @@ h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); }
   border: 1px solid #fae6c0;
 }
 
+.badge-time {
+  color: #1e40af;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
 .event-card-title {
   margin: 8px 0 10px;
   font-size: 1.22rem;

@@ -55,15 +55,42 @@ const getFileProtocolErrorMessage = (dataType = "データ") => {
   return `<p class="empty-message">${dataType}を読み込めませんでした。時間をおいて再度お試しください。</p>`;
 };
 
-// スケジュールやトップページ用カード作成
-const createCard = (item, isSchedule = false) => {
-  const meta = isSchedule
-    ? `${formatDate(item.date)} ${item.time} ｜ ${item.location}`
-    : `${formatDate(item.date)} ｜ ${item.location}`;
-  if (isSchedule) {
-    return `<article class="event-card"><p class="event-meta">${escapeHtml(meta)}</p><h3>${escapeHtml(item.title)}</h3>${item.description ? `<p class="event-description">${escapeHtml(item.description)}</p>` : ""}</article>`;
-  }
+// 今日の日付文字列（YYYY-MM-DD）を取得
+const getTodayDateString = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
 
+// スケジュール用カード作成
+const createScheduleCard = (item) => {
+  const formattedDate = formatDate(item.date);
+  const time = item.time ? escapeHtml(item.time) : "";
+  const location = item.location ? escapeHtml(item.location) : "";
+  const description = item.description
+    ? `<p class="event-description">${escapeHtml(item.description)}</p>`
+    : "";
+
+  return `
+    <article class="event-card schedule-card">
+      <div class="event-card-top">
+        <div class="event-card-badges">
+          <span class="badge badge-date">📅 ${escapeHtml(formattedDate)}</span>
+          ${time ? `<span class="badge badge-time">⏰ ${time}</span>` : ""}
+          ${location ? `<span class="badge badge-location">📍 ${location}</span>` : ""}
+        </div>
+      </div>
+      <h3 class="event-card-title">${escapeHtml(item.title)}</h3>
+      ${description}
+    </article>
+  `;
+};
+
+// トップページ用カード作成
+const createCard = (item) => {
+  const meta = `${formatDate(item.date)} ｜ ${item.location}`;
   const participants = item.participants && item.participants !== "-"
     ? `<p class="event-participants">参加者：${escapeHtml(item.participants)}</p>`
     : "";
@@ -130,28 +157,283 @@ const createEventArchiveCard = (item) => {
   `;
 };
 
-// スケジュール一覧の表示
-const renderItems = async (url, targetId, isSchedule = false, limit) => {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-  try {
-    const response = await fetch(`${url}?v=${Date.now()}`);
-    if (!response.ok) throw new Error("Failed to load data");
-    const items = await response.json();
+// スケジュール一覧（年・月の横並びタブ表示・昇順・本日以降のみ）
+const renderScheduleArchive = async () => {
+  const scheduleList = document.getElementById("schedule-list");
+  const filterWrapper = document.getElementById("schedule-filter-wrapper");
+  const summaryBar = document.getElementById("schedule-summary-bar");
 
-    items.sort((a, b) => {
-      if (!a.date) return 1;
-      if (!b.date) return -1;
-      return b.date.localeCompare(a.date);
+  if (!scheduleList) return;
+
+  try {
+    const response = await fetch(`data/schedule.json?v=${Date.now()}`);
+    if (!response.ok) throw new Error("Failed to load schedule data");
+    const rawItems = await response.json();
+
+    if (!Array.isArray(rawItems) || rawItems.length === 0) {
+      scheduleList.innerHTML = '<p class="empty-message">現在予定されている開催情報はありません。</p>';
+      if (filterWrapper) filterWrapper.innerHTML = "";
+      if (summaryBar) summaryBar.innerHTML = "";
+      return;
+    }
+
+    const today = getTodayDateString();
+
+    // 過去の日程（本日より前）を除外
+    const upcomingEvents = rawItems.filter((item) => {
+      if (!item.date) return false;
+      return item.date >= today;
     });
 
-    const displayedItems = limit ? items.slice(0, limit) : items;
-    target.innerHTML = displayedItems.length
-      ? displayedItems.map((item) => createCard(item, isSchedule)).join("")
-      : '<p class="empty-message">現在掲載中の情報はありません。</p>';
+    if (upcomingEvents.length === 0) {
+      scheduleList.innerHTML = '<p class="empty-message">現在予定されている開催情報はありません。</p>';
+      if (filterWrapper) filterWrapper.innerHTML = "";
+      if (summaryBar) summaryBar.innerHTML = "";
+      return;
+    }
+
+    // 時間表記の正規化（例: "8:00" -> "08:00" で正しく比較）
+    const normalizeTime = (timeStr) => {
+      if (!timeStr) return "";
+      const match = timeStr.match(/^(\d{1,2}):(\d{2})/);
+      return match ? `${match[1].padStart(2, "0")}:${match[2]}` : timeStr;
+    };
+
+    // 日付を昇順（直近・早い日程順、同日の場合は開始時間順）にソート
+    upcomingEvents.sort((a, b) => {
+      const dateDiff = a.date.localeCompare(b.date);
+      if (dateDiff !== 0) return dateDiff;
+      return normalizeTime(a.time).localeCompare(normalizeTime(b.time));
+    });
+
+    // 年と月でデータをグループ化
+    const yearMonthData = new Map(); // year -> Map(month -> events[])
+    const allMonthsSet = new Set();
+
+    upcomingEvents.forEach((item) => {
+      if (!item.date) return;
+      const year = item.date.substring(0, 4);
+      const month = parseInt(item.date.substring(5, 7), 10);
+      allMonthsSet.add(month);
+
+      if (!yearMonthData.has(year)) {
+        yearMonthData.set(year, new Map());
+      }
+      const mData = yearMonthData.get(year);
+      if (!mData.has(month)) {
+        mData.set(month, []);
+      }
+      mData.get(month).push(item);
+    });
+
+    // 直近順（昇順）で年・月をソート
+    const years = Array.from(yearMonthData.keys()).sort((a, b) => a.localeCompare(b));
+    const allMonths = Array.from(allMonthsSet).sort((a, b) => a - b);
+
+    // 選択状態
+    let selectedYear = "all";
+    let selectedMonth = "all";
+
+    const parseHash = () => {
+      const hash = window.location.hash.replace("#", "").trim();
+      if (!hash || hash === "all") {
+        selectedYear = "all";
+        selectedMonth = "all";
+        return;
+      }
+      if (hash.startsWith("month-")) {
+        const m = parseInt(hash.replace("month-", ""), 10);
+        if (!isNaN(m)) {
+          selectedYear = "all";
+          selectedMonth = String(m);
+        }
+        return;
+      }
+      if (hash.includes("-")) {
+        const [y, mStr] = hash.split("-");
+        if (yearMonthData.has(y)) {
+          selectedYear = y;
+          const m = parseInt(mStr, 10);
+          if (!isNaN(m) && yearMonthData.get(y).has(m)) {
+            selectedMonth = String(m);
+          } else {
+            selectedMonth = "all";
+          }
+          return;
+        }
+      }
+      if (yearMonthData.has(hash)) {
+        selectedYear = hash;
+        selectedMonth = "all";
+      }
+    };
+
+    parseHash();
+
+    const updateUrlHash = () => {
+      let newHash = "all";
+      if (selectedYear !== "all" && selectedMonth !== "all") {
+        const formattedMonth = String(selectedMonth).padStart(2, "0");
+        newHash = `${selectedYear}-${formattedMonth}`;
+      } else if (selectedYear !== "all") {
+        newHash = `${selectedYear}`;
+      } else if (selectedMonth !== "all") {
+        newHash = `month-${selectedMonth}`;
+      }
+
+      if (history.replaceState) {
+        history.replaceState(null, "", `#${newHash}`);
+      } else {
+        window.location.hash = newHash;
+      }
+    };
+
+    const renderTabsAndList = () => {
+      if (filterWrapper) {
+        // 1. 年タブ（横並び）の生成
+        let yearTabsHtml = `
+          <div class="filter-row">
+            <span class="filter-label">開催年</span>
+            <div class="tabs-nav year-tabs" role="tablist" aria-label="開催年の選択">
+              <button type="button" role="tab" class="tab-btn ${selectedYear === 'all' ? 'active' : ''}" data-year="all" aria-selected="${selectedYear === 'all'}">
+                <span>すべての年</span>
+                <span class="tab-count">${upcomingEvents.length}</span>
+              </button>
+        `;
+
+        years.forEach((y) => {
+          const yMap = yearMonthData.get(y);
+          let count = 0;
+          yMap.forEach((evts) => { count += evts.length; });
+          const isActive = selectedYear === y;
+          yearTabsHtml += `
+            <button type="button" role="tab" class="tab-btn ${isActive ? 'active' : ''}" data-year="${y}" aria-selected="${isActive}">
+              <span>${y}年</span>
+              <span class="tab-count">${count}</span>
+            </button>
+          `;
+        });
+        yearTabsHtml += `</div></div>`;
+
+        // 2. 月タブ（横並び）の生成
+        let availableMonths = [];
+        let totalEventsInScope = 0;
+
+        if (selectedYear === "all") {
+          totalEventsInScope = upcomingEvents.length;
+          allMonths.forEach((m) => {
+            let count = 0;
+            yearMonthData.forEach((mData) => {
+              if (mData.has(m)) count += mData.get(m).length;
+            });
+            if (count > 0) {
+              availableMonths.push({ month: m, count });
+            }
+          });
+        } else {
+          const mData = yearMonthData.get(selectedYear);
+          if (mData) {
+            mData.forEach((evts) => { totalEventsInScope += evts.length; });
+            Array.from(mData.keys()).sort((a, b) => a - b).forEach((m) => {
+              availableMonths.push({ month: m, count: mData.get(m).length });
+            });
+          }
+        }
+
+        if (selectedMonth !== "all" && !availableMonths.some((item) => String(item.month) === String(selectedMonth))) {
+          selectedMonth = "all";
+        }
+
+        let monthTabsHtml = `
+          <div class="filter-divider"></div>
+          <div class="filter-row">
+            <span class="filter-label">開催月</span>
+            <div class="tabs-nav month-tabs" role="tablist" aria-label="開催月の選択">
+              <button type="button" role="tab" class="tab-btn ${selectedMonth === 'all' ? 'active' : ''}" data-month="all" aria-selected="${selectedMonth === 'all'}">
+                <span>すべての月</span>
+                <span class="tab-count">${totalEventsInScope}</span>
+              </button>
+        `;
+
+        availableMonths.forEach(({ month, count }) => {
+          const isActive = String(selectedMonth) === String(month);
+          monthTabsHtml += `
+            <button type="button" role="tab" class="tab-btn ${isActive ? 'active' : ''}" data-month="${month}" aria-selected="${isActive}">
+              <span>${month}月</span>
+              <span class="tab-count">${count}</span>
+            </button>
+          `;
+        });
+        monthTabsHtml += `</div></div>`;
+
+        filterWrapper.innerHTML = yearTabsHtml + monthTabsHtml;
+
+        // 年タブクリックイベント
+        filterWrapper.querySelectorAll("[data-year]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const y = btn.getAttribute("data-year");
+            if (y === selectedYear) return;
+            selectedYear = y;
+            updateUrlHash();
+            renderTabsAndList();
+          });
+        });
+
+        // 月タブクリックイベント
+        filterWrapper.querySelectorAll("[data-month]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const m = btn.getAttribute("data-month");
+            if (m === selectedMonth) return;
+            selectedMonth = m;
+            updateUrlHash();
+            renderTabsAndList();
+          });
+        });
+      }
+
+      // 3. 一覧のフィルタリング
+      const filteredEvents = upcomingEvents.filter((item) => {
+        if (!item.date) return false;
+        const y = item.date.substring(0, 4);
+        const m = parseInt(item.date.substring(5, 7), 10);
+        if (selectedYear !== "all" && y !== selectedYear) return false;
+        if (selectedMonth !== "all" && String(m) !== String(selectedMonth)) return false;
+        return true;
+      });
+
+      // 4. サマリーバーの更新
+      if (summaryBar) {
+        let summaryText = "";
+        if (selectedYear === "all" && selectedMonth === "all") {
+          summaryText = `<span class="summary-label">すべての開催予定</span> <span class="summary-count">全 ${filteredEvents.length} 件</span>`;
+        } else if (selectedYear !== "all" && selectedMonth === "all") {
+          summaryText = `<span class="summary-label"><strong>${selectedYear}年</strong> のすべての開催予定</span> <span class="summary-count">${filteredEvents.length} 件</span>`;
+        } else if (selectedYear !== "all" && selectedMonth !== "all") {
+          summaryText = `<span class="summary-label"><strong>${selectedYear}年${selectedMonth}月</strong> の開催予定</span> <span class="summary-count">${filteredEvents.length} 件</span>`;
+        } else {
+          summaryText = `<span class="summary-label"><strong>${selectedMonth}月</strong> の開催予定</span> <span class="summary-count">${filteredEvents.length} 件</span>`;
+        }
+        summaryBar.innerHTML = summaryText;
+      }
+
+      // 5. カード一覧の描画
+      if (filteredEvents.length === 0) {
+        scheduleList.innerHTML = '<p class="empty-message">該当する開催予定はありません。</p>';
+      } else {
+        scheduleList.innerHTML = filteredEvents.map(createScheduleCard).join("");
+      }
+    };
+
+    renderTabsAndList();
+
+    window.addEventListener("hashchange", () => {
+      parseHash();
+      renderTabsAndList();
+    });
+
   } catch (error) {
-    console.error("renderItems error:", error);
-    target.innerHTML = getFileProtocolErrorMessage("情報");
+    console.error("renderScheduleArchive error:", error);
+    scheduleList.innerHTML = getFileProtocolErrorMessage("開催予定");
   }
 };
 
@@ -487,5 +769,5 @@ if (yearElement) {
 }
 renderLatestEvents();
 renderEventsArchive();
-renderItems("data/schedule.json", "schedule-list", true);
+renderScheduleArchive();
 renderEventDetail();
