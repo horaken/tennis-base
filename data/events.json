@@ -360,5 +360,26 @@
         "url": "https://share.gemini.google/cBvNjjkPUSlb"
       }
     ]
+  },
+  {
+    "id": "20260905-01",
+    "date": "2026-09-05",
+    "title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
+    "location": "大島小松川公園",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Taka」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1224146683"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/05D3cK0plYmm"
+      }
+    ]
   }
 ]
