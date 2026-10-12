@@ -633,5 +633,26 @@
         "url": "https://share.gemini.google/KHkhTnAazBXT"
       }
     ]
+  },
+  {
+    "id": "20261012-01",
+    "date": "2026-10-12",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "\"サーブ練習,\"リターン練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「MIURA」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1234898111"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/25NlBh9sAmY1"
+      }
+    ]
   }
 ]
