@@ -654,5 +654,27 @@
         "url": "https://share.gemini.google/25NlBh9sAmY1"
       }
     ]
+  },
+
+  {
+    "id": "20261017-01",
+    "date": "2026-10-17",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "\"サーブ練習,\"リターン練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ゲン」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "2026年10月17日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-10-17&file=サーブ動画_1017.mp4"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/7O3UG926OuIF"
+      }
+    ]
   }
 ]
