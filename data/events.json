@@ -675,5 +675,26 @@
         "url": "https://share.gemini.google/7O3UG926OuIF"
       }
     ]
-  }
+  },
+  {
+    "id": "20261017-02",
+    "date": "2026-10-17",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "7名",
+    "practiceContents": "\"サーブ練習,\"ストローク練習\",\"ボレー練習\"",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「いーじま」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "2026年10月17日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-10-17&file=練習動画_1017.mp4"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/TAAyYmlQ9TDK"
+      }
+    ]
+  }  
 ]
