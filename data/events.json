@@ -666,7 +666,6 @@
 "videos": [
 {
 "title": "2026年10月17日 サーブ練習会",
-        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-10-17&file=サーブ動画_1017.mp4"
         "url": "https://horaken.github.io/tennis-base/video-player/?id=1017_20261017_202610&file=サーブ動画_1017.mp4"
 }
 ],
@@ -687,8 +686,6 @@
 "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「いーじま」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
 "videos": [
 {
-        "title": "2026年10月17日 サーブ練習会",
-        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-10-17&file=練習動画_1017.mp4"
         "title": "2026年10月17日 基礎練習会",
         "url": "https://horaken.github.io/tennis-base/video-player/?id=1017_20261017_20261017&file=練習動画_1017.mp4"
 }
