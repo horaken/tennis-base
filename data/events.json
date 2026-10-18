@@ -1,700 +1,721 @@
 [
-{
-"id": "20260725-01",
-"date": "2026-07-25",
-"title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
-"location": "荒川砂町庭球場",
-"participants": "5名",
-"practiceContents": [
-"サーブ練習",
-"ストローク練習",
-"ボレー練習"
-],
-"comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「Ina」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画",
-"url": "https://vimeo.com/1212858722"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断",
-"url": "https://share.gemini.google/MuhocwsHrxtD"
-}
-]
-},
-{
-"id": "20260726-01",
-"date": "2026-07-26",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": [
-"サーブ練習",
-"レシーブ練習"
-],
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ケイン」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画",
-"url": "https://vimeo.com/1212976843"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断",
-"url": "https://share.gemini.google/AtGXUUyGpGr9"
-}
-]
-},
-{
-"id": "20260801-01",
-"date": "2026-08-01",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": [
-"サーブ練習",
-"レシーブ練習"
-],
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「おおつか」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
-"videos": [
-{
-"title": "サーブ動画",
-"url": "https://vimeo.com/1214747407"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断",
-"url": "https://share.gemini.google/nm1djOFfVumo"
-}
-]
-},
-{
-"id": "20260802-01",
-"date": "2026-08-02",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": [
-"サーブ練習",
-"レシーブ練習"
-],
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Ma-no」さんをＡＩが選出しました。詳細は、リンクでご確認ください。  ",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1214927311"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/UW5U4WkAnjtq"
-}
-]
-},
-{
-"id": "20260802-02",
-"date": "2026-08-02",
-"title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "8名",
-"practiceContents": [
-"サーブ練習",
-"ストローク練習",
-"ボレー練習"
-],
-"comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「yosuke」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1214927427"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/OS85AMNHSWvm"
-}
-]
-},
-{
-"id": "20260808-01",
-"date": "2026-08-08",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
-"location": "荒川砂町庭球場",
-"participants": "7名",
-"practiceContents": [
-"サーブ練習",
-"レシーブ練習"
-],
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Taku」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1216586925"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/vp85WnSz2yGk"
-}
-]
-},
-{
-"id": "20260809-01",
-"date": "2026-08-09",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "9名",
-"practiceContents": [
-"サーブ練習",
-"レシーブ練習"
-],
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「さとす 」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1216742475"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/Sf7GqbY8IwHP"
-}
-]
-},
-{
-"id": "20260809-02",
-"date": "2026-08-09",
-"title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
-"location": "大島小松川公園",
-"participants": "9名",
-"practiceContents": [
-"サーブ練習",
-"レシーブ練習"
-],
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「daizoon」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1216742603"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/EZCa7hHeJBsx"
-}
-]
-},
-{
-"id": "20260811-01",
-"date": "2026-08-11",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "サーブ練習,レシーブ練習",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「かつかつ」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1217171998"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/NAGtjJpKmq6D"
-}
-]
-},
-{
-"id": "20260815-01",
-"date": "2026-08-15",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "サーブ練習,レシーブ練習",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「たっつん」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1218460953"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/y4xAFw5NyxyG"
-}
-]
-},
-{
-"id": "20260816-01",
-"date": "2026-08-16",
-"title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
-"location": "荒川砂町庭球場",
-"participants": "6名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1220343427"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/H5hdimo8wjzh"
-}
-]
-},
-{
-"id": "20260816-02",
-"date": "2026-08-16",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「おおたに」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1218605900"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/1SXWlmzFQv7m"
-}
-]
-},
-{
-"id": "20260822-01",
-"date": "2026-08-22",
-"title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
-"location": "荒川砂町庭球場",
-"participants": "6名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1220343427"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/H5hdimo8wjzh"
-}
-]
-},
-{
-"id": "20260822-02",
-"date": "2026-08-22",
-"title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★ ",
-"location": "大島小松川公園",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ゆう」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1220366746"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/ARi0KKhNkmJw"
-}
-]
-},
-{
-"id": "20260829-01",
-"date": "2026-08-29",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kim」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1222228481"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/xCpMLfOb5HQi"
-}
-]
-},
-{
-"id": "20260830-01",
-"date": "2026-08-30",
-"title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
-"location": "大島小松川公園",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「なが」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1222415001"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/cBvNjjkPUSlb"
-}
-]
-},
-{
-"id": "20260905-01",
-"date": "2026-09-05",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Taka」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1224146683"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/05D3cK0plYmm"
-}
-]
-},
-{
-"id": "20260913-01",
-"date": "2026-09-13",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "9名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「SO」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1226270711"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/XKIE2eAoOIir"
-}
-]
-},
-{
-"id": "20260919-01",
-"date": "2026-09-19",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "8名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「たけし」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1228236830"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/jVzEmOz9GdTc"
-}
-]
-},
-{
-"id": "20260922-01",
-"date": "2026-09-22",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ponta」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1229010739"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/LkcGf4iw2VZ6"
-}
-]
-},
-{
-"id": "20260923-01",
-"date": "2026-09-23",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「keihin」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1229355051"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/1frKFDaKmaAx"
-}
-]
-},
-{
-"id": "20260927-01",
-"date": "2026-09-27",
-"title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
-"location": "大島小松川公園",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「みやざき」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1230595469"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/83Aik4OmMJfW"
-}
-]
-},
-{
-"id": "20260927-02",
-"date": "2026-09-27",
-"title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "大島小松川公園",
-"participants": "8名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1230613606"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/kKKNOqJHUTf1"
-}
-]
-},
-{
-"id": "20261003-01",
-"date": "2026-10-03",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "9名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「mittsu」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1232509136"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/vyWlKfkENKTU"
-}
-]
-},
-{
-"id": "20261004-01",
-"date": "2026-10-04",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "8名",
-"practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「かと」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1232681450"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/4no3vKelBXBQ"
-}
-]
-},
-{
-"id": "20261004-02",
-"date": "2026-10-04",
-"title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "8名",
-"practiceContents": "  \"サーブ練習\",\"ストローク練習\",\"ボレー練習\"",
-"comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1232698932"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/fJ6fGXCbcftA"
-}
-]
-},
-{
-"id": "20261010-01",
-"date": "2026-10-10",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "9名",
-"practiceContents": "  \"サーブ練習\",\"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「★TAKA★」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1234549233"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/guLCuuXvWcmG"
-}
-]
-},
-{
-"id": "20261011-01",
-"date": "2026-10-11",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "  \"サーブ練習\",\"レシーブ練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「にしはら」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1234724903"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/ldRoXIAOR0FE"
-}
-]
-},
-{
-"id": "20261011-02",
-"date": "2026-10-11",
-"title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "8名",
-"practiceContents": "\"サーブ練習,\"ストローク練習\",\"ボレー練習\"",
-"comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「★TAKA★」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "サーブ動画(Vimeo)",
-"url": "https://vimeo.com/1234744670"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/KHkhTnAazBXT"
-}
-]
-},
-{
-"id": "20261012-01",
-"date": "2026-10-12",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "\"サーブ練習,\"リターン練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「MIURA」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "2026年10月12日 サーブ練習会",
-"url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-10-12&file=サーブ動画_1012.mp4"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/25NlBh9sAmY1"
-}
-]
-},
-{
-"id": "20261017-01",
-"date": "2026-10-17",
-"title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "10名",
-"practiceContents": "\"サーブ練習,\"リターン練習\"",
-"comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ゲン」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
-"title": "2026年10月17日 サーブ練習会",
+  {
+    "id": "20260725-01",
+    "date": "2026-07-25",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
+    "location": "荒川砂町庭球場",
+    "participants": "5名",
+    "practiceContents": [
+      "サーブ練習",
+      "ストローク練習",
+      "ボレー練習"
+    ],
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「Ina」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画",
+        "url": "https://vimeo.com/1212858722"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断",
+        "url": "https://share.gemini.google/MuhocwsHrxtD"
+      }
+    ]
+  },
+  {
+    "id": "20260726-01",
+    "date": "2026-07-26",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": [
+      "サーブ練習",
+      "レシーブ練習"
+    ],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ケイン」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画",
+        "url": "https://vimeo.com/1212976843"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断",
+        "url": "https://share.gemini.google/AtGXUUyGpGr9"
+      }
+    ]
+  },
+  {
+    "id": "20260801-01",
+    "date": "2026-08-01",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": [
+      "サーブ練習",
+      "レシーブ練習"
+    ],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「おおつか」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
+    "videos": [
+      {
+        "title": "サーブ動画",
+        "url": "https://vimeo.com/1214747407"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断",
+        "url": "https://share.gemini.google/nm1djOFfVumo"
+      }
+    ]
+  },
+  {
+    "id": "20260802-01",
+    "date": "2026-08-02",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": [
+      "サーブ練習",
+      "レシーブ練習"
+    ],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Ma-no」さんをＡＩが選出しました。詳細は、リンクでご確認ください。  ",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1214927311"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/UW5U4WkAnjtq"
+      }
+    ]
+  },
+  {
+    "id": "20260802-02",
+    "date": "2026-08-02",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "8名",
+    "practiceContents": [
+      "サーブ練習",
+      "ストローク練習",
+      "ボレー練習"
+    ],
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「yosuke」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1214927427"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/OS85AMNHSWvm"
+      }
+    ]
+  },
+  {
+    "id": "20260808-01",
+    "date": "2026-08-08",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
+    "location": "荒川砂町庭球場",
+    "participants": "7名",
+    "practiceContents": [
+      "サーブ練習",
+      "レシーブ練習"
+    ],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Taku」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1216586925"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/vp85WnSz2yGk"
+      }
+    ]
+  },
+  {
+    "id": "20260809-01",
+    "date": "2026-08-09",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "9名",
+    "practiceContents": [
+      "サーブ練習",
+      "レシーブ練習"
+    ],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「さとす 」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1216742475"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/Sf7GqbY8IwHP"
+      }
+    ]
+  },
+  {
+    "id": "20260809-02",
+    "date": "2026-08-09",
+    "title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
+    "location": "大島小松川公園",
+    "participants": "9名",
+    "practiceContents": [
+      "サーブ練習",
+      "レシーブ練習"
+    ],
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「daizoon」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1216742603"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/EZCa7hHeJBsx"
+      }
+    ]
+  },
+  {
+    "id": "20260811-01",
+    "date": "2026-08-11",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "サーブ練習,レシーブ練習",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「かつかつ」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1217171998"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/NAGtjJpKmq6D"
+      }
+    ]
+  },
+  {
+    "id": "20260815-01",
+    "date": "2026-08-15",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "サーブ練習,レシーブ練習",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「たっつん」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1218460953"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/y4xAFw5NyxyG"
+      }
+    ]
+  },
+  {
+    "id": "20260816-01",
+    "date": "2026-08-16",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
+    "location": "荒川砂町庭球場",
+    "participants": "6名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1220343427"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/H5hdimo8wjzh"
+      }
+    ]
+  },
+  {
+    "id": "20260816-02",
+    "date": "2026-08-16",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「おおたに」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1218605900"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/1SXWlmzFQv7m"
+      }
+    ]
+  },
+  {
+    "id": "20260822-01",
+    "date": "2026-08-22",
+    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★ ",
+    "location": "荒川砂町庭球場",
+    "participants": "6名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1220343427"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/H5hdimo8wjzh"
+      }
+    ]
+  },
+  {
+    "id": "20260822-02",
+    "date": "2026-08-22",
+    "title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★ ",
+    "location": "大島小松川公園",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ゆう」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1220366746"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/ARi0KKhNkmJw"
+      }
+    ]
+  },
+  {
+    "id": "20260829-01",
+    "date": "2026-08-29",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kim」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1222228481"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/xCpMLfOb5HQi"
+      }
+    ]
+  },
+  {
+    "id": "20260830-01",
+    "date": "2026-08-30",
+    "title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
+    "location": "大島小松川公園",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「なが」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1222415001"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/cBvNjjkPUSlb"
+      }
+    ]
+  },
+  {
+    "id": "20260905-01",
+    "date": "2026-09-05",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Taka」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1224146683"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/05D3cK0plYmm"
+      }
+    ]
+  },
+  {
+    "id": "20260913-01",
+    "date": "2026-09-13",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "9名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「SO」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1226270711"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/XKIE2eAoOIir"
+      }
+    ]
+  },
+  {
+    "id": "20260919-01",
+    "date": "2026-09-19",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "8名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「たけし」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1228236830"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/jVzEmOz9GdTc"
+      }
+    ]
+  },
+  {
+    "id": "20260922-01",
+    "date": "2026-09-22",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ponta」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1229010739"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/LkcGf4iw2VZ6"
+      }
+    ]
+  },
+  {
+    "id": "20260923-01",
+    "date": "2026-09-23",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「keihin」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1229355051"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/1frKFDaKmaAx"
+      }
+    ]
+  },
+  {
+    "id": "20260927-01",
+    "date": "2026-09-27",
+    "title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
+    "location": "大島小松川公園",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「みやざき」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1230595469"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/83Aik4OmMJfW"
+      }
+    ]
+  },
+  {
+    "id": "20260927-02",
+    "date": "2026-09-27",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "大島小松川公園",
+    "participants": "8名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1230613606"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/kKKNOqJHUTf1"
+      }
+    ]
+  },
+  {
+    "id": "20261003-01",
+    "date": "2026-10-03",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "9名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「mittsu」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1232509136"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/vyWlKfkENKTU"
+      }
+    ]
+  },
+  {
+    "id": "20261004-01",
+    "date": "2026-10-04",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "8名",
+    "practiceContents": "  \"サーブ練習\", \"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「かと」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1232681450"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/4no3vKelBXBQ"
+      }
+    ]
+  },
+  {
+    "id": "20261004-02",
+    "date": "2026-10-04",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "8名",
+    "practiceContents": "  \"サーブ練習\",\"ストローク練習\",\"ボレー練習\"",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1232698932"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/fJ6fGXCbcftA"
+      }
+    ]
+  },
+  {
+    "id": "20261010-01",
+    "date": "2026-10-10",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "9名",
+    "practiceContents": "  \"サーブ練習\",\"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「★TAKA★」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1234549233"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/guLCuuXvWcmG"
+      }
+    ]
+  },
+  {
+    "id": "20261011-01",
+    "date": "2026-10-11",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "  \"サーブ練習\",\"レシーブ練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「にしはら」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1234724903"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/ldRoXIAOR0FE"
+      }
+    ]
+  },
+  {
+    "id": "20261011-02",
+    "date": "2026-10-11",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "8名",
+    "practiceContents": "\"サーブ練習,\"ストローク練習\",\"ボレー練習\"",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「★TAKA★」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "サーブ動画(Vimeo)",
+        "url": "https://vimeo.com/1234744670"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/KHkhTnAazBXT"
+      }
+    ]
+  },
+  {
+    "id": "20261012-01",
+    "date": "2026-10-12",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "\"サーブ練習,\"リターン練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「MIURA」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "2026年10月12日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-10-12&file=サーブ動画_1012.mp4"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/25NlBh9sAmY1"
+      }
+    ]
+  },
+  {
+    "id": "20261017-01",
+    "date": "2026-10-17",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "10名",
+    "practiceContents": "\"サーブ練習,\"リターン練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ゲン」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "2026年10月17日 サーブ練習会",
         "url": "https://horaken.github.io/tennis-base/video-player/?id=1017_20261017_202610&file=サーブ動画_1017.mp4"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/7O3UG926OuIF"
-}
-]
-},
-{
-"id": "20261017-02",
-"date": "2026-10-17",
-"title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
-"location": "荒川砂町庭球場",
-"participants": "7名",
-"practiceContents": "\"サーブ練習,\"ストローク練習\",\"ボレー練習\"",
-"comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「いーじま」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
-"videos": [
-{
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/7O3UG926OuIF"
+      }
+    ]
+  },
+  {
+    "id": "20261017-02",
+    "date": "2026-10-17",
+    "title": "初中級レベルからの基礎練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "location": "荒川砂町庭球場",
+    "participants": "7名",
+    "practiceContents": "\"サーブ練習,\"ストローク練習\",\"ボレー練習\"",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「いーじま」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
         "title": "2026年10月17日 基礎練習会",
         "url": "https://horaken.github.io/tennis-base/video-player/?id=1017_20261017_20261017&file=練習動画_1017.mp4"
-}
-],
-"aiConsultations": [
-{
-"title": "サーブ動画のＡＩ診断(Gemini)",
-"url": "https://share.gemini.google/TAAyYmlQ9TDK"
-}
-]
-}  
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/TAAyYmlQ9TDK"
+      }
+    ]
+  },
+  {
+    "id": "20261018-01",
+    "date": "2026-10-18",
+    "title": "サーブ＆レシーブ自由練習会 大島小松川公園 ★動画＆AI分析付★",
+    "location": "大島小松川公園",
+    "participants": "8名",
+    "practiceContents": "\"サーブ練習,\"リターン練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「うあん」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "2026年10月18日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=1018_20261018_20261018&file=サーブ動画_1018.mp4"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/eDlLkz1ffz1w"
+      }
+    ]
+  }
 ]
