@@ -717,5 +717,26 @@
         "url": "https://share.gemini.google/eDlLkz1ffz1w"
       }
     ]
+  },
+  {
+    "id": "20261018-02",
+    "date": "2026-10-18",
+    "title": "初中級レベルからの基礎練習会 大島小松川公園 ★動画＆AI分析付★",
+    "location": "大島小松川公園",
+    "participants": "8名",
+    "practiceContents": "\"サーブ練習,\"ストローク練習\",\"ボレー練習\"",
+    "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「UEKI」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
+    "videos": [
+      {
+        "title": "2026年10月18日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=1018_20261018_202610&file=練習動画_1018.mp4"
+      }
+    ],
+    "aiConsultations": [
+      {
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/uYiJEZwMXtCJ"
+      }
+    ]
   }
 ]
