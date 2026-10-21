@@ -1,71 +1,81 @@
-# tennis-base.net
+# tennis-base.net (React SPA)
 
-テニスコミュニティ向けの情報発信サイトです。開催記録と今後の開催予定を、管理者がJSONファイルを更新するだけで掲載できます。利用者向けのログイン・投稿機能はありません。
+テニスコミュニティ向けの情報発信・フォーム分析Webアプリケーションです。開催記録の一覧・詳細、今後の開催予定、動画コマ送りプレーヤー（フレーム単位送り・速度変更・fps変更）を搭載しています。
 
-## フォルダ構成
+## 主な機能
+
+- **トップページ (`/`)**
+  - コミュニティ紹介ヒーローエリア（開催予定表・開催記録一覧・動画検索へのクイックリンクボタン）
+  - 最新の開催情報5件（動画・AI診断付き）
+  - 今後の開催予定へのクイックリンク
+- **テニス動画検索 (`/video-search`)**
+  - 参加者ハンドルネームによるサーブ動画の検索機能
+  - Googleスプレッドシート（Google Apps Script Web API）とのリアルタイム連携
+  - 該当イベント名、開催日、動画URL（開始位置秒数付き）、AI診断リンク、管理者メモの表示
+  - コマ送りプレーヤーへのスムーズな再生連携
+- **開催記録一覧 (`/events`)**
+  - 年・月ごとのタブ切り替えフィルター（件数バッジ付き）
+  - URLハッシュ同期（`#2026-10` など）
+  - 開催日・開催場所・参加人数バッジ、練習内容タグ
+  - 詳細結果・動画リンク・AI診断結果へのダイレクトアクション
+- **開催記録詳細 (`/events/:id`)**
+  - 開催場所・参加人数
+  - 練習内容リスト、管理者コメント、練習写真ギャラリー
+  - 練習動画リンク（コマ送りプレーヤー連携）
+  - AI診断結果リンク
+- **今後の開催予定 (`/schedule`)**
+  - 本日以降の予定 / 全登録スケジュールの切り替え
+  - 年・月ごとのタブ切り替え
+  - 開催日・時間・場所バッジ、詳細説明
+- **テニス動画コマ送りプレーヤー (`/video-player`)**
+  - 1コマ戻る / 進む（フレーム単位シーク）
+  - 再生 / 停止（スペースキー、左右キー操作対応）
+  - 再生速度調整（0.25x 〜 1.0x）
+  - フレームレート選択（24fps 〜 240fps）
+  - 再生時間および推定フレーム番号のリアルタイム表示
+  - Internet Archive動画の読み込み、開催記録からのクイック選択
+
+## プロジェクト構成
 
 ```text
-tennis-base/
-├─ index.html          # トップページ
-├─ events.html         # 開催記録一覧
-├─ event.html          # 開催記録の詳細表示（共通ページ）
-├─ schedule.html       # 今後の開催予定
-├─ css/
-│  └─ style.css        # 共通デザイン・スマホ表示
-├─ js/
-│  └─ app.js           # JSONの読み込みと画面表示
-└─ data/
-   ├─ events.json      # 開催記録データ
-   └─ schedule.json    # 開催予定データ
+├── index.html            # Vite HTMLエントリーポイント
+├── package.json          # 依存関係・起動スクリプト
+├── tsconfig.json         # TypeScript設定
+├── vite.config.ts        # Vite設定
+├── src/
+│   ├── main.tsx          # React ルートマウント
+│   ├── App.tsx           # ルーティング定義
+│   ├── types.ts          # イベント・スケジュール型定義
+│   ├── style.css         # ブランドデザイン共通スタイル
+│   ├── services/
+│   │   └── dataService.ts# 開催データ読み込み
+│   ├── utils/
+│   │   └── format.ts     # 日付・時間・動画パラメータ整形
+│   ├── components/
+│   │   ├── Header.tsx    # ナビゲーションヘッダー
+│   │   └── Footer.tsx    # フッター
+│   └── pages/
+│       ├── HomePage.tsx        # トップページ
+│       ├── EventsPage.tsx      # 開催記録一覧
+│       ├── EventDetailPage.tsx # 開催記録詳細
+│       ├── SchedulePage.tsx    # 今後の開催予定
+│       └── VideoPlayerPage.tsx # コマ送り動画プレーヤー
+├── data/
+│   ├── events.json       # 開催記録マスターデータ
+│   └── schedule.json     # 開催予定マスターデータ
+└── public/
+    └── data/             # 静的配信データ
 ```
 
-## 開催情報の追加方法
+## 開発とビルド
 
-`data/events.json` の配列の先頭に、次の形式で新しい開催情報を追加します。`id` はほかの記録と重複しない値にしてください。
+```bash
+# 開発サーバー起動 (ポート 3000)
+npm run dev
 
-```json
-{
-  "id": "2026-08-10-arakawa-practice",
-  "date": "2026-08-10",
-  "title": "荒川練習会",
-  "location": "荒川河川敷テニスコート",
-  "participants": "8名",
-  "practiceContents": ["サーブ練習", "ラリー練習"],
-  "comment": "練習会のコメントを入力します。",
-  "photos": [
-    {
-      "url": "assets/images/2026-08-10-01.jpg",
-      "alt": "荒川練習会の様子"
-    }
-  ],
-  "videos": [
-    {
-      "title": "練習動画",
-      "url": "https://video.example.com/your-video"
-    }
-  ],
-  "aiConsultations": [
-    {
-      "participant": "参加者名または全体",
-      "title": "AI相談結果のタイトル",
-      "url": "https://example.com/your-ai-result"
-    }
-  ]
-}
+# 本番ビルド
+npm run build
+
+# プレビュー
+npm run preview
 ```
-
-- `practiceContents`、`photos`、`videos`、`aiConsultations` は複数追加できます。
-- 写真を使わない場合は `"photos": []` とします。画像は将来 `assets/images/` フォルダを作成して配置できます。
-- 動画・AI相談結果のURLは、実際に共有する外部ページのURLへ置き換えてください。
-- 追加後にGitHubへ反映すると、開催記録一覧、詳細ページ、トップページの最新開催情報へ自動で表示されます。
-
-## GitHub Pages公開方法
-
-1. GitHubでリポジトリを作成し、このフォルダ内のファイルを `main` ブランチへアップロードします。
-2. リポジトリの **Settings** → **Pages** を開きます。
-3. **Build and deployment** のSourceで **Deploy from a branch** を選択します。
-4. Branchに `main`、フォルダに `/ (root)` を選び、保存します。
-5. 数分後に表示されるURLで公開を確認します。
-6. 独自ドメインを使う場合は、同じ画面の **Custom domain** に `tennis-base.net` を入力し、ドメイン管理サービス側でGitHub Pages向けのDNS設定を行います。
-
-GitHub Pagesでは、公開ページを直接ファイルとして開くのではなく、公開URLまたはローカルWebサーバー経由で確認してください。JSONデータはJavaScriptで読み込むため、`file://` 形式で直接開くとブラウザの制限により表示されない場合があります。
