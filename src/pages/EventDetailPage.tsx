@@ -1,20 +1,71 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
-import { getEventsData } from '../services/dataService';
+import { getEventsData, fetchEventsData } from '../services/dataService';
 import { formatDate, parsePracticeContents, getVideoPlayerParams } from '../utils/format';
+import { EventItem } from '../types';
 
 export const EventDetailPage: React.FC = () => {
   const { id: pathId } = useParams<{ id: string }>();
   const [searchParams] = useSearchParams();
   const queryId = searchParams.get('id');
 
-  const eventId = pathId || queryId;
+  const rawId = (pathId || queryId || '').trim();
+  const [eventsList, setEventsList] = useState<EventItem[]>(() => getEventsData());
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // Load latest events from Google Spreadsheet / JSON dynamically
+  useEffect(() => {
+    let isMounted = true;
+    fetchEventsData()
+      .then((data) => {
+        if (isMounted && data && data.length > 0) {
+          setEventsList(data);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const event = useMemo(() => {
-    if (!eventId) return null;
-    const events = getEventsData();
-    return events.find((item) => item.id === eventId) || null;
-  }, [eventId]);
+    if (!rawId) return null;
+
+    // 1. Exact match
+    const exact = eventsList.find((item) => item.id === rawId);
+    if (exact) return exact;
+
+    // 2. Case-insensitive / normalized match (e.g., removing hyphens: 20261018-02 vs 2026101802)
+    const normId = rawId.replace(/[-_]/g, '').toLowerCase();
+    const normalized = eventsList.find(
+      (item) => (item.id || '').replace(/[-_]/g, '').toLowerCase() === normId
+    );
+    if (normalized) return normalized;
+
+    // 3. Date-based fallback if passed date string as id (e.g., 2026-10-18)
+    const byDate = eventsList.find((item) => item.date === rawId);
+    if (byDate) return byDate;
+
+    return null;
+  }, [rawId, eventsList]);
+
+  if (isLoading && !event) {
+    return (
+      <main className="section page-main">
+        <div className="container" aria-live="polite">
+          <div className="empty-message" style={{ padding: '60px 20px', textAlign: 'center' }}>
+            <p style={{ fontSize: '1.1rem', color: 'var(--muted)', fontWeight: 600 }}>
+              ⏳ 開催記録を読み込んでいます…
+            </p>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   if (!event) {
     return (
@@ -22,8 +73,8 @@ export const EventDetailPage: React.FC = () => {
         <div className="container" aria-live="polite">
           <div className="empty-message">
             <h2>開催記録が見つかりませんでした</h2>
-            <p>指定されたIDのイベントが存在しないか、削除された可能性があります。</p>
-            <p>
+            <p>指定されたID（{rawId ? `ID: ${rawId}` : 'ID未指定'}）のイベントが存在しないか、削除された可能性があります。</p>
+            <p style={{ marginTop: '12px' }}>
               <Link className="text-link" to="/events">
                 ← 開催記録一覧へ戻る
               </Link>
@@ -68,87 +119,93 @@ export const EventDetailPage: React.FC = () => {
         {practices.length > 0 && (
           <section className="detail-section">
             <h2>練習内容</h2>
-            <ul>
-              {practices.map((practice, index) => (
-                <li key={index}>{practice}</li>
+            <ul className="practice-list">
+              {practices.map((content, index) => (
+                <li key={index}>{content}</li>
               ))}
             </ul>
           </section>
         )}
 
-        {/* コメント */}
+        {/* コメント・総括 */}
         {event.comment && (
           <section className="detail-section">
-            <h2>コメント</h2>
-            <p>{event.comment}</p>
+            <h2>開催メモ・総括</h2>
+            <p className="detail-comment">{event.comment}</p>
           </section>
         )}
 
-        {/* 写真 */}
+        {/* 練習動画 */}
+        {videos.length > 0 && (
+          <section className="detail-section">
+            <h2>練習動画</h2>
+            <ul className="link-list">
+              {videos.map((vid, index) => {
+                const playerParams = getVideoPlayerParams(vid.url);
+                return (
+                  <li key={index}>
+                    {playerParams ? (
+                      <Link
+                        className="text-link"
+                        to={`/video-player?id=${encodeURIComponent(playerParams.id)}&file=${encodeURIComponent(playerParams.file)}`}
+                        style={{ fontWeight: 700 }}
+                      >
+                        🎥 {vid.title}（コマ送りプレーヤーで再生）
+                      </Link>
+                    ) : (
+                      <a
+                        className="text-link"
+                        href={vid.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        🎥 {vid.title}
+                      </a>
+                    )}
+                    {vid.participant && <span className="tag-chip">{vid.participant}</span>}
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
+        {/* AI診断・分析 */}
+        {consultations.length > 0 && (
+          <section className="detail-section">
+            <h2>AI診断・分析</h2>
+            <ul className="link-list">
+              {consultations.map((item, index) => (
+                <li key={index}>
+                  <a
+                    className="text-link"
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ✨ {item.title}
+                  </a>
+                  {item.participant && <span className="tag-chip">{item.participant}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* 写真一覧 */}
         {photos.length > 0 && (
           <section className="detail-section">
             <h2>写真</h2>
             <div className="photo-grid">
-              {photos.map((photo, index) => (
-                <img key={index} src={photo.url} alt={photo.alt || `${event.title}の様子`} />
+              {photos.map((item, index) => (
+                <img
+                  key={index}
+                  src={item.url}
+                  alt={item.alt || `${event.title}の写真`}
+                  loading="lazy"
+                />
               ))}
             </div>
-          </section>
-        )}
-
-        {/* 動画リンク */}
-        {videos.length > 0 && (
-          <section className="detail-section">
-            <h2>動画リンク</h2>
-            <ul className="detail-link-list">
-              {videos.map((video, index) => {
-                const label = video.participant
-                  ? `${video.participant}：${video.title}`
-                  : video.title || '動画を見る';
-                const videoParams = getVideoPlayerParams(video.url);
-
-                if (videoParams) {
-                  return (
-                    <li key={index}>
-                      <Link
-                        to={`/video-player?id=${encodeURIComponent(videoParams.id)}&file=${encodeURIComponent(videoParams.file)}`}
-                      >
-                        🎥 {label}（コマ送りプレーヤーで開く）
-                      </Link>
-                    </li>
-                  );
-                }
-
-                return (
-                  <li key={index}>
-                    <a href={video.url} target="_blank" rel="noopener noreferrer">
-                      🎥 {label}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-        )}
-
-        {/* AI相談結果 */}
-        {consultations.length > 0 && (
-          <section className="detail-section">
-            <h2>AI相談結果</h2>
-            <ul className="detail-link-list">
-              {consultations.map((consultation, index) => {
-                const label = consultation.participant
-                  ? `${consultation.participant}：${consultation.title}`
-                  : consultation.title || 'AI診断結果を見る';
-                return (
-                  <li key={index}>
-                    <a href={consultation.url} target="_blank" rel="noopener noreferrer">
-                      ✨ {label}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
           </section>
         )}
 
