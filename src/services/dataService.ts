@@ -42,37 +42,43 @@ export const fetchScheduleData = async (): Promise<ScheduleItem[]> => {
 
 /**
  * Fetch events data dynamically at runtime (with cache busting)
- * Checks Google Spreadsheet first, then /data/events.json, then bundled JSON
+ * Prefers GitHub JSON for matching IDs and appends sheet-only events
  */
 export const fetchEventsData = async (): Promise<EventItem[]> => {
+  let sheetEvents: EventItem[] = [];
+
   // 1. Try Google Spreadsheet direct GViz sync
   try {
-    const sheetEvents = await fetchEventsFromSheet();
-    if (sheetEvents && sheetEvents.length > 0) {
-      // Merge by event id: sheet records override or prepend to existing
-      const existing = (rawEvents as unknown as EventItem[]) || [];
-      const sheetIds = new Set(sheetEvents.map((e) => e.id));
-      const nonOverlapping = existing.filter((e) => !sheetIds.has(e.id));
-      return [...sheetEvents, ...nonOverlapping];
-    }
+    sheetEvents = await fetchEventsFromSheet();
   } catch (err) {
     console.warn('Google Sheet events fetch failed:', err);
   }
 
-  // 2. Try static /data/events.json
+  // GitHub JSON is the source of truth for matching IDs. Sheet-only events
+  // remain available so new events can continue to be entered in the sheet.
   try {
-    const res = await fetch(`/data/events.json?v=${Date.now()}`);
+    const jsonUrl = new URL('./data/events.json', window.location.href);
+    jsonUrl.searchParams.set('v', String(Date.now()));
+    const res = await fetch(jsonUrl.toString());
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data)) {
-        return data as EventItem[];
+        const githubEvents = data as EventItem[];
+        const githubIds = new Set(githubEvents.map((event) => event.id));
+        const sheetOnlyEvents = sheetEvents.filter((event) => !githubIds.has(event.id));
+        return [...githubEvents, ...sheetOnlyEvents];
       }
     }
   } catch (err) {
     console.warn('Failed to fetch /data/events.json dynamically, using fallback', err);
   }
 
-  return rawEvents as unknown as EventItem[];
+  // If the live JSON cannot be reached, use the bundled GitHub snapshot first
+  // and append only events that exist solely in the spreadsheet.
+  const bundledEvents = (rawEvents as unknown as EventItem[]) || [];
+  const bundledIds = new Set(bundledEvents.map((event) => event.id));
+  const sheetOnlyEvents = sheetEvents.filter((event) => !bundledIds.has(event.id));
+  return [...bundledEvents, ...sheetOnlyEvents];
 };
 
 export const getEventsData = (): EventItem[] => {
