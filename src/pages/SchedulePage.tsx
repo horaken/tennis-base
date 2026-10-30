@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getScheduleData, fetchScheduleData } from '../services/dataService';
 import { formatDate, getTodayDateString, normalizeTime } from '../utils/format';
 import { ScheduleItem } from '../types';
+import { TennisCourtDecoration } from '../components/TennisDecorations';
 
 export const SchedulePage: React.FC = () => {
   const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>(() => getScheduleData());
@@ -224,7 +225,10 @@ export const SchedulePage: React.FC = () => {
   return (
     <main className="section page-main">
       <div className="container">
-        <div className="page-heading-group">
+        <div className="page-heading-group" style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', right: 0, top: 0, opacity: 0.85 }}>
+            <TennisCourtDecoration />
+          </div>
           <p className="eyebrow">SCHEDULE</p>
           <h1>今後の開催予定</h1>
           <p className="lead">

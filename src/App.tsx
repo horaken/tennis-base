@@ -8,6 +8,7 @@ import { EventDetailPage } from './pages/EventDetailPage';
 import { SchedulePage } from './pages/SchedulePage';
 import { VideoPlayerPage } from './pages/VideoPlayerPage';
 import { VideoSearchPage } from './pages/VideoSearchPage';
+import { ParticipantSearchPage } from './pages/ParticipantSearchPage';
 
 export const App: React.FC = () => {
   const location = useLocation();
@@ -33,9 +34,11 @@ export const App: React.FC = () => {
         <Route path="/event.html" element={<EventDetailPage />} />
         <Route path="/schedule" element={<SchedulePage />} />
         <Route path="/schedule.html" element={<SchedulePage />} />
+        <Route path="/participant-search" element={<ParticipantSearchPage />} />
+        <Route path="/participant-search.html" element={<ParticipantSearchPage />} />
         <Route path="/video-search" element={<VideoSearchPage />} />
         <Route path="/video-search.html" element={<VideoSearchPage />} />
-        <Route path="/search" element={<VideoSearchPage />} />
+        <Route path="/search" element={<ParticipantSearchPage />} />
         <Route path="/video-player" element={<VideoPlayerPage />} />
         <Route path="/video-player/index.html" element={<VideoPlayerPage />} />
         <Route path="*" element={<HomePage />} />

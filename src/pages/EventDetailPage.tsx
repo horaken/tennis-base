@@ -3,6 +3,7 @@ import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { getEventsData, fetchEventsData } from '../services/dataService';
 import { formatDate, parsePracticeContents, getVideoPlayerParams } from '../utils/format';
 import { EventItem } from '../types';
+import { TennisBallDecoration } from '../components/TennisDecorations';
 
 export const EventDetailPage: React.FC = () => {
   const { id: pathId } = useParams<{ id: string }>();
@@ -92,7 +93,10 @@ export const EventDetailPage: React.FC = () => {
 
   return (
     <main className="section page-main">
-      <div className="container" aria-live="polite">
+      <div className="container" aria-live="polite" style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', right: 0, top: 0, opacity: 0.85 }}>
+          <TennisBallDecoration />
+        </div>
         <p className="eyebrow">EVENT DETAIL</p>
         <p className="event-meta">{formatDate(event.date)}</p>
         <h1>{event.title}</h1>
@@ -108,8 +112,33 @@ export const EventDetailPage: React.FC = () => {
             )}
             {event.participants && (
               <div>
-                <dt>参加者</dt>
+                <dt>参加者数</dt>
                 <dd>{event.participants}</dd>
+              </div>
+            )}
+            {event.participantNames && event.participantNames.length > 0 && (
+              <div>
+                <dt>参加者名一覧</dt>
+                <dd>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '4px' }}>
+                    {event.participantNames.map((name, idx) => (
+                      <span
+                        key={idx}
+                        style={{
+                          fontSize: '0.85rem',
+                          padding: '3px 10px',
+                          borderRadius: '14px',
+                          backgroundColor: '#ecfdf5',
+                          color: '#047857',
+                          border: '1px solid #10b981',
+                          fontWeight: 700,
+                        }}
+                      >
+                        {name}
+                      </span>
+                    ))}
+                  </div>
+                </dd>
               </div>
             )}
           </dl>

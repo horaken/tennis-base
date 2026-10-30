@@ -21,6 +21,7 @@ export interface EventItem {
   title: string;
   location?: string;
   participants?: string;
+  participantNames?: string[];
   practiceContents?: string[] | string;
   comment?: string;
   videos?: VideoLink[];

@@ -170,6 +170,11 @@ export const fetchEventsFromSheet = async (
   const titleIdx = headers.indexOf('title');
   const locIdx = headers.indexOf('location');
   const partIdx = headers.indexOf('participants');
+  let partNamesIdx = headers.indexOf('participantnames');
+  if (partNamesIdx < 0) partNamesIdx = headers.indexOf('participant_names');
+  if (partNamesIdx < 0) partNamesIdx = headers.indexOf('参加者名');
+  if (partNamesIdx < 0) partNamesIdx = headers.indexOf('参加者');
+
   const pracIdx = headers.indexOf('practicecontents');
   const commentIdx = headers.indexOf('comment');
   const vTitleIdx = headers.indexOf('videos_title');
@@ -194,8 +199,27 @@ export const fetchEventsFromSheet = async (
     const title = (r[titleIdx >= 0 ? titleIdx : 2] || '').trim();
     const location = (r[locIdx >= 0 ? locIdx : 3] || '').trim();
     const participants = (r[partIdx >= 0 ? partIdx : 4] || '').trim();
+
+    // Parse participant names from D column (comma or whitespace separated)
+    const rawPartNames = (r[partNamesIdx >= 0 ? partNamesIdx : -1] || '').trim();
+    const parsedNames = rawPartNames
+      ? rawPartNames
+          .split(/[,、\s\u3000\n]+/)
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0)
+      : [];
+
     const practiceContents = (r[pracIdx >= 0 ? pracIdx : 5] || '').trim();
     const comment = (r[commentIdx >= 0 ? commentIdx : 6] || '').trim();
+
+    // Extract best server from comment if present (e.g. 「おおつか」さん)
+    const bestServerMatch = comment.match(/「([^」]+)」/);
+    if (bestServerMatch && bestServerMatch[1]) {
+      const bestName = bestServerMatch[1].trim();
+      if (bestName && !parsedNames.includes(bestName)) {
+        parsedNames.push(bestName);
+      }
+    }
 
     const vTitle = (r[vTitleIdx >= 0 ? vTitleIdx : 7] || '').trim();
     const vUrl = (r[vUrlIdx >= 0 ? vUrlIdx : 8] || '').trim();
@@ -211,6 +235,7 @@ export const fetchEventsFromSheet = async (
       title,
       location,
       participants,
+      participantNames: parsedNames,
       practiceContents,
       comment,
       videos,
@@ -218,5 +243,70 @@ export const fetchEventsFromSheet = async (
     });
   }
 
+  // Also enrich with participant names from "イベント参加者" sheet
+  try {
+    const partMap = await fetchParticipantNamesFromSheet(spreadsheetId);
+    items.forEach((item) => {
+      const fromPartSheet =
+        partMap.get(item.id) || partMap.get(item.id.replace(/-/g, ''));
+      if (fromPartSheet && fromPartSheet.length > 0) {
+        const set = new Set(item.participantNames || []);
+        fromPartSheet.forEach((n) => set.add(n));
+        item.participantNames = Array.from(set);
+      }
+    });
+  } catch (err) {
+    console.warn('Failed to merge participant names from イベント参加者 sheet:', err);
+  }
+
   return items;
+};
+
+/**
+ * Fetches participant names map from the dedicated "イベント参加者" sheet
+ * Returns a Map where key is strictly eventId (with and without hyphen)
+ */
+export const fetchParticipantNamesFromSheet = async (
+  spreadsheetId = getSpreadsheetId()
+): Promise<Map<string, string[]>> => {
+  const map = new Map<string, string[]>();
+  if (!spreadsheetId) return map;
+
+  const rows = await fetchSheetCsv(spreadsheetId, 'イベント参加者');
+  if (!rows || rows.length <= 1) return map;
+
+  const headers = rows[0].map((h) => h.toLowerCase().trim());
+  const idIdx = headers.indexOf('eventid') >= 0 ? headers.indexOf('eventid') : headers.indexOf('id');
+  const dateIdx = headers.indexOf('開催日') >= 0 ? headers.indexOf('開催日') : headers.indexOf('date');
+  let namesIdx = headers.indexOf('participantnames');
+  if (namesIdx < 0) namesIdx = headers.indexOf('participant_names');
+  if (namesIdx < 0) namesIdx = headers.indexOf('参加者名');
+  if (namesIdx < 0) namesIdx = headers.indexOf('参加者');
+  if (namesIdx < 0 && headers.length > 3) namesIdx = 3;
+
+  for (let i = 1; i < rows.length; i++) {
+    const r = rows[i];
+    const eventId = (r[idIdx >= 0 ? idIdx : 0] || '').trim();
+    const date = (r[dateIdx >= 0 ? dateIdx : 1] || '').replace(/\//g, '-').trim();
+    const rawNames = (r[namesIdx >= 0 ? namesIdx : (r.length - 1)] || '').trim();
+
+    if (!rawNames) continue;
+
+    const names = rawNames
+      .split(/[,、\s\u3000\n]+/)
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0);
+
+    if (names.length === 0) continue;
+
+    if (eventId) {
+      map.set(eventId, names);
+      map.set(eventId.replace(/-/g, ''), names);
+    } else if (date) {
+      // Only fallback to date if eventId is completely empty
+      map.set(date, names);
+    }
+  }
+
+  return map;
 };

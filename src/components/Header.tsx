@@ -9,7 +9,9 @@ export const Header: React.FC = () => {
     pathname === '/events' || pathname === '/events.html' || pathname.startsWith('/events/');
   const isScheduleActive = pathname === '/schedule' || pathname === '/schedule.html';
   const isVideoSearchActive =
-    pathname === '/video-search' || pathname === '/video-search.html' || pathname === '/search';
+    pathname === '/video-search' || pathname === '/video-search.html';
+  const isParticipantSearchActive =
+    pathname === '/participant-search' || pathname === '/participant-search.html' || pathname === '/search';
   const isVideoPlayerActive =
     pathname === '/video-player' ||
     pathname === '/video-player/' ||
@@ -43,11 +45,11 @@ export const Header: React.FC = () => {
             </li>
             <li>
               <Link
-                to="/video-search"
-                className={isVideoSearchActive ? 'active' : ''}
-                aria-current={isVideoSearchActive ? 'page' : undefined}
+                to="/participant-search"
+                className={isParticipantSearchActive ? 'active' : ''}
+                aria-current={isParticipantSearchActive ? 'page' : undefined}
               >
-                動画検索
+                ＩＤ検索
               </Link>
             </li>
             <li>

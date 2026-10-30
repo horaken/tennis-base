@@ -1,7 +1,11 @@
 import rawEvents from '../../data/events.json';
 import rawSchedule from '../../data/schedule.json';
 import { EventItem, ScheduleItem } from '../types';
-import { fetchScheduleFromSheet, fetchEventsFromSheet } from './sheetScheduleService';
+import {
+  fetchScheduleFromSheet,
+  fetchEventsFromSheet,
+  fetchParticipantNamesFromSheet,
+} from './sheetScheduleService';
 import { getTodayDateString } from '../utils/format';
 
 /**
@@ -25,7 +29,8 @@ export const fetchScheduleData = async (): Promise<ScheduleItem[]> => {
 
   // 2. Try static /data/schedule.json
   try {
-    const res = await fetch(`/data/schedule.json?v=${Date.now()}`);
+    const basePath = typeof window !== 'undefined' && window.location.pathname.startsWith('/tennis-base') ? '/tennis-base' : '';
+    const res = await fetch(`${basePath}/data/schedule.json?v=${Date.now()}`);
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -42,43 +47,77 @@ export const fetchScheduleData = async (): Promise<ScheduleItem[]> => {
 
 /**
  * Fetch events data dynamically at runtime (with cache busting)
- * Prefers GitHub JSON for matching IDs and appends sheet-only events
+ * Enriches events with participantNames from the "イベント参加者" sheet
  */
 export const fetchEventsData = async (): Promise<EventItem[]> => {
-  let sheetEvents: EventItem[] = [];
+  // 1. Fetch participant map from "イベント参加者" sheet
+  let participantMap = new Map<string, string[]>();
+  try {
+    participantMap = await fetchParticipantNamesFromSheet();
+  } catch (err) {
+    console.warn('Failed to fetch participant names from sheet:', err);
+  }
 
-  // 1. Try Google Spreadsheet direct GViz sync
+  // 2. Fetch sheet events
+  let sheetEvents: EventItem[] = [];
   try {
     sheetEvents = await fetchEventsFromSheet();
   } catch (err) {
     console.warn('Google Sheet events fetch failed:', err);
   }
 
-  // GitHub JSON is the source of truth for matching IDs. Sheet-only events
-  // remain available so new events can continue to be entered in the sheet.
+  // 3. Fetch github events
+  let baseEvents: EventItem[] = [];
   try {
-    const jsonUrl = new URL('./data/events.json', window.location.href);
-    jsonUrl.searchParams.set('v', String(Date.now()));
-    const res = await fetch(jsonUrl.toString());
+    const basePath = typeof window !== 'undefined' && window.location.pathname.startsWith('/tennis-base') ? '/tennis-base' : '';
+    const res = await fetch(`${basePath}/data/events.json?v=${Date.now()}`);
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data)) {
-        const githubEvents = data as EventItem[];
-        const githubIds = new Set(githubEvents.map((event) => event.id));
-        const sheetOnlyEvents = sheetEvents.filter((event) => !githubIds.has(event.id));
-        return [...githubEvents, ...sheetOnlyEvents];
+        baseEvents = data as EventItem[];
       }
     }
   } catch (err) {
     console.warn('Failed to fetch /data/events.json dynamically, using fallback', err);
   }
 
-  // If the live JSON cannot be reached, use the bundled GitHub snapshot first
-  // and append only events that exist solely in the spreadsheet.
-  const bundledEvents = (rawEvents as unknown as EventItem[]) || [];
-  const bundledIds = new Set(bundledEvents.map((event) => event.id));
-  const sheetOnlyEvents = sheetEvents.filter((event) => !bundledIds.has(event.id));
-  return [...bundledEvents, ...sheetOnlyEvents];
+  if (baseEvents.length === 0) {
+    baseEvents = (rawEvents as unknown as EventItem[]) || [];
+  }
+
+  // Merge sheet-only events
+  const baseIds = new Set(baseEvents.map((event) => event.id));
+  const sheetOnlyEvents = sheetEvents.filter((event) => !baseIds.has(event.id));
+  const combined = [...baseEvents, ...sheetOnlyEvents];
+
+  const sheetEventMap = new Map(sheetEvents.map((e) => [e.id, e]));
+
+  // 4. Enrich every event with participantNames from participantMap and sheetEvents
+  return combined.map((event) => {
+    const fromPartSheet =
+      participantMap.get(event.id) ||
+      participantMap.get(event.id.replace(/-/g, ''));
+    const fromSheetEvent = sheetEventMap.get(event.id);
+
+    const mergedNames = new Set<string>(event.participantNames || []);
+    if (fromPartSheet) {
+      fromPartSheet.forEach((n) => mergedNames.add(n));
+    }
+    if (fromSheetEvent && fromSheetEvent.participantNames) {
+      fromSheetEvent.participantNames.forEach((n) => mergedNames.add(n));
+    }
+
+    // Also extract best server from comment if present
+    const bestServerMatch = event.comment?.match(/「([^」]+)」/);
+    if (bestServerMatch && bestServerMatch[1]) {
+      mergedNames.add(bestServerMatch[1].trim());
+    }
+
+    return {
+      ...event,
+      participantNames: Array.from(mergedNames),
+    };
+  });
 };
 
 export const getEventsData = (): EventItem[] => {

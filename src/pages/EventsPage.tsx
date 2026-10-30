@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getEventsData, fetchEventsData } from '../services/dataService';
 import { formatDate, parsePracticeContents, getVideoPlayerParams } from '../utils/format';
 import { EventItem } from '../types';
+import { TennisCourtDecoration } from '../components/TennisDecorations';
 
 export const EventsPage: React.FC = () => {
   const [eventsList, setEventsList] = useState<EventItem[]>(() => getEventsData());
@@ -208,7 +209,10 @@ export const EventsPage: React.FC = () => {
   return (
     <main className="section page-main">
       <div className="container">
-        <div className="page-heading-group">
+        <div className="page-heading-group" style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', right: 0, top: 0, opacity: 0.85 }}>
+            <TennisCourtDecoration />
+          </div>
           <p className="eyebrow">EVENTS</p>
           <h1>開催記録</h1>
           <p className="lead">
@@ -320,6 +324,28 @@ export const EventsPage: React.FC = () => {
                       )}
                     </div>
                   </div>
+
+                  {/* 参加者名一覧 */}
+                  {item.participantNames && item.participantNames.length > 0 && (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', margin: '4px 0 8px 0' }}>
+                      {item.participantNames.map((name, idx) => (
+                        <span
+                          key={idx}
+                          style={{
+                            fontSize: '0.78rem',
+                            padding: '2px 8px',
+                            borderRadius: '12px',
+                            backgroundColor: '#ecfdf5',
+                            color: '#047857',
+                            border: '1px solid #10b981',
+                            fontWeight: 600,
+                          }}
+                        >
+                          {name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   <h3 className="event-card-title">
                     <Link className="card-title-link" to={detailUrl}>

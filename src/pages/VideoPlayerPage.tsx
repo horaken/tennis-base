@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { getEventsData } from '../services/dataService';
-import { getVideoPlayerParams } from '../utils/format';
+import { getEventsData, fetchEventsData } from '../services/dataService';
+import { formatDate, getVideoPlayerParams } from '../utils/format';
+import { EventItem } from '../types';
+import { TennisBallDecoration } from '../components/TennisDecorations';
 
 export const VideoPlayerPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -12,6 +14,7 @@ export const VideoPlayerPage: React.FC = () => {
   const initialSecondsParam = searchParams.get('t') || searchParams.get('startSeconds') || '';
   const initialSeconds = Number(initialSecondsParam);
 
+  const [events, setEvents] = useState<EventItem[]>(() => getEventsData());
   const [inputArchiveId, setInputArchiveId] = useState(archiveId);
   const [inputFileName, setInputFileName] = useState(fileName);
   const [speed, setSpeed] = useState<number>(1);
@@ -22,6 +25,19 @@ export const VideoPlayerPage: React.FC = () => {
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasSeekedInitialRef = useRef<boolean>(false);
+
+  // Fetch latest dynamic events with participant names from sheet
+  useEffect(() => {
+    let isMounted = true;
+    fetchEventsData().then((data) => {
+      if (isMounted && data && data.length > 0) {
+        setEvents(data);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Sync state if search params change
   useEffect(() => {
@@ -35,10 +51,36 @@ export const VideoPlayerPage: React.FC = () => {
     return `https://archive.org/download/${encodeURIComponent(archiveId)}/${encodeURIComponent(fileName)}`;
   }, [archiveId, fileName]);
 
-  // Extract preset videos from events.json for convenience
+  // Find matching event for current video (by eventId param, or by archiveId & file matching)
+  const currentEvent = useMemo(() => {
+    const eventIdParam = searchParams.get('eventId') || searchParams.get('event');
+    if (eventIdParam) {
+      const found = events.find((e) => e.id === eventIdParam);
+      if (found) return found;
+    }
+
+    const normArchiveId = archiveId.toLowerCase().trim();
+    const normFileName = decodeURIComponent(fileName).toLowerCase().trim();
+
+    return events.find((ev) => {
+      return (ev.videos || []).some((v) => {
+        const p = getVideoPlayerParams(v.url);
+        if (!p) return false;
+        const pId = p.id.toLowerCase().trim();
+        const pFile = decodeURIComponent(p.file).toLowerCase().trim();
+        return (
+          pId === normArchiveId &&
+          (pFile === normFileName ||
+            normFileName.includes(pFile) ||
+            pFile.includes(normFileName))
+        );
+      });
+    });
+  }, [events, archiveId, fileName, searchParams]);
+
+  // Extract preset videos from events for convenience
   const eventVideoPresets = useMemo(() => {
-    const events = getEventsData();
-    const presets: { label: string; date: string; id: string; file: string }[] = [];
+    const presets: { label: string; date: string; id: string; file: string; eventId: string }[] = [];
 
     events.forEach((ev) => {
       (ev.videos || []).forEach((vid) => {
@@ -49,13 +91,14 @@ export const VideoPlayerPage: React.FC = () => {
             date: ev.date,
             id: p.id,
             file: p.file,
+            eventId: ev.id,
           });
         }
       });
     });
 
     return presets;
-  }, []);
+  }, [events]);
 
   const updateStatus = useCallback(() => {
     const video = videoRef.current;
@@ -130,10 +173,11 @@ export const VideoPlayerPage: React.FC = () => {
     }
   };
 
-  const handleSelectPreset = (preset: { id: string; file: string }) => {
+  const handleSelectPreset = (preset: { id: string; file: string; eventId: string }) => {
     setSearchParams({
       id: preset.id,
       file: preset.file,
+      eventId: preset.eventId,
     });
   };
 
@@ -210,7 +254,10 @@ export const VideoPlayerPage: React.FC = () => {
 
   return (
     <main className="section page-main">
-      <div className="container video-player-container">
+      <div className="container video-player-container" style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', right: 0, top: 0, opacity: 0.85 }}>
+          <TennisBallDecoration />
+        </div>
         <div style={{ marginBottom: '16px' }}>
           <p className="eyebrow">VIDEO ANALYSIS</p>
           <h2>テニス動画コマ送りプレーヤー</h2>
@@ -218,6 +265,100 @@ export const VideoPlayerPage: React.FC = () => {
             フレーム単位での巻き戻し・早送りが可能なテニスフォーム分析用プレーヤーです。キーボードの左右矢印キーで1コマ移動、スペースキーで再生/停止が可能です。
           </p>
         </div>
+
+        {/* 開催情報（eventId, 開催日, イベント名, participantNames） */}
+        {currentEvent && (
+          <div
+            style={{
+              backgroundColor: '#f8fafc',
+              border: '2px solid #a7f3d0',
+              borderRadius: '12px',
+              padding: '18px 20px',
+              marginBottom: '20px',
+              boxShadow: '0 2px 8px rgba(16, 185, 129, 0.08)',
+            }}
+          >
+            <div style={{ display: 'grid', gap: '8px', fontSize: '0.9rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <span style={{ fontWeight: 700, color: '#334155', minWidth: '100px' }}>eventId:</span>
+                <code style={{ background: '#e2e8f0', padding: '2px 6px', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 700, color: '#0f172a' }}>
+                  {currentEvent.id}
+                </code>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <span style={{ fontWeight: 700, color: '#334155', minWidth: '100px' }}>開催日:</span>
+                <span style={{ fontWeight: 700, color: '#047857' }}>
+                  📅 {formatDate(currentEvent.date)} ({currentEvent.date})
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', flexWrap: 'wrap' }}>
+                <span style={{ fontWeight: 700, color: '#334155', minWidth: '100px', paddingTop: '2px' }}>イベント名:</span>
+                <span style={{ fontWeight: 800, color: '#0f172a', fontSize: '1.05rem', flex: '1 1 300px' }}>
+                  {currentEvent.title}
+                </span>
+              </div>
+
+              {/* participantNames（参加者） */}
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', flexWrap: 'wrap', paddingTop: '8px', borderTop: '1px dashed #cbd5e1' }}>
+                <span style={{ fontWeight: 700, color: '#334155', minWidth: '100px', paddingTop: '2px' }}>
+                  participantNames:
+                </span>
+                <div style={{ flex: '1 1 300px' }}>
+                  {currentEvent.participantNames && currentEvent.participantNames.length > 0 ? (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {currentEvent.participantNames.map((name, i) => (
+                        <span
+                          key={i}
+                          style={{
+                            fontSize: '0.85rem',
+                            padding: '3px 10px',
+                            borderRadius: '14px',
+                            backgroundColor: '#ffffff',
+                            color: '#064e3b',
+                            border: '1px solid #10b981',
+                            fontWeight: 700,
+                            boxShadow: '0 1px 2px rgba(16, 185, 129, 0.12)',
+                          }}
+                        >
+                          {name}
+                        </span>
+                      ))}
+                    </div>
+                  ) : currentEvent.participants ? (
+                    <span style={{ fontSize: '0.9rem', color: '#475569' }}>
+                      {currentEvent.participants}
+                    </span>
+                  ) : (
+                    <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontStyle: 'italic' }}>
+                      参加者リスト未登録
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '14px', display: 'flex', gap: '12px', alignItems: 'center', paddingTop: '10px', borderTop: '1px solid #e2e8f0' }}>
+              <Link
+                to={`/events/${encodeURIComponent(currentEvent.id)}`}
+                style={{ fontSize: '0.85rem', color: '#2563eb', fontWeight: 600, textDecoration: 'none' }}
+              >
+                開催記録詳細へ →
+              </Link>
+              {currentEvent.aiConsultations && currentEvent.aiConsultations[0]?.url && (
+                <a
+                  href={currentEvent.aiConsultations[0].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: '0.85rem', color: '#4f46e5', fontWeight: 600, textDecoration: 'none' }}
+                >
+                  ✨ AI診断を見る ↗
+                </a>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* 動画プレイヤー */}
         <div className="video-element-wrapper">

@@ -51,24 +51,21 @@
   {
     "id": "20260801-01",
     "date": "2026-08-01",
-    "title": "サーブ＆レシーブ自由練習会 江東区荒川砂町 ★動画＆AI分析付★",
+    "title": "サーブ＆レシーブ自由練習会 荒川砂町庭球場 ★動画＆AI分析付★",
     "location": "荒川砂町庭球場",
     "participants": "10名",
-    "practiceContents": [
-      "サーブ練習",
-      "レシーブ練習"
-    ],
-    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「おおつか」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
+    "practiceContents": "\"サーブ練習,\"リターン練習\"",
+    "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「AR」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画",
-        "url": "https://vimeo.com/1214747407"
+        "title": "2026年08月01日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-01&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0801.mp4"
       }
     ],
     "aiConsultations": [
       {
-        "title": "サーブ動画のＡＩ診断",
-        "url": "https://share.gemini.google/nm1djOFfVumo"
+        "title": "サーブ動画のＡＩ診断(Gemini)",
+        "url": "https://share.gemini.google/V4dOP6r3lLt2"
       }
     ]
   },
@@ -85,8 +82,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Ma-no」さんをＡＩが選出しました。詳細は、リンクでご確認ください。  ",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1214927311"
+        "title": "2026年08月02日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-02&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0802.mp4"
       }
     ],
     "aiConsultations": [
@@ -110,8 +107,8 @@
     "comment": "ボールを沢山打って、苦手なショットの改善を目指しました。本日のベストサーバーは、「yosuke」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1214927427"
+        "title": "2026年08月02日 基礎練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-02&file=%E7%B7%B4%E7%BF%92%E5%8B%95%E7%94%BB_0802.mp4"
       }
     ],
     "aiConsultations": [
@@ -134,8 +131,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Taku」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1216586925"
+        "title": "2026年08月08日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-08&file=%E3%82%B5%E3%83%BC%E3%83%96%E7%B7%B4%E7%BF%92_0808.mp4"
       }
     ],
     "aiConsultations": [
@@ -158,8 +155,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「さとす 」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1216742475"
+        "title": "2026年08月09日8:00 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-09&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0809_0800.mp4"
       }
     ],
     "aiConsultations": [
@@ -182,8 +179,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「daizoon」さんをＡＩが選出しました。詳細は、リンクでご確認ください。 ",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1216742603"
+        "title": "2026年08月09日11:00 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=0809-1100&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0809_1100.mp4"
       }
     ],
     "aiConsultations": [
@@ -203,8 +200,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「かつかつ」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1217171998"
+        "title": "2026年08月11日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-11&file=%E3%82%B5%E3%83%BC%E3%83%96%E7%B7%B4%E7%BF%92_0811.mp4"
       }
     ],
     "aiConsultations": [
@@ -224,8 +221,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「たっつん」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1218460953"
+        "title": "2026年08月15日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-15&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0815.mp4"
       }
     ],
     "aiConsultations": [
@@ -245,8 +242,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1220343427"
+        "title": "2026年08月16日 基礎練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-16&file=%E7%B7%B4%E7%BF%92%E5%8B%95%E7%94%BB_0816.mp4"
       }
     ],
     "aiConsultations": [
@@ -266,8 +263,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「おおたに」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1218605900"
+        "title": "2026年08月16日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-16&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0816.mp4"
       }
     ],
     "aiConsultations": [
@@ -287,8 +284,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kiyo」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1220343427"
+        "title": "2026年08月22日8:00 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=horaken-2026-08-22&file=%E3%82%B5%E3%83%BC%E3%83%96%E7%B7%B4%E7%BF%92_0822_0800.mp4"
       }
     ],
     "aiConsultations": [
@@ -308,8 +305,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「ゆう」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1220366746"
+        "title": "2026年08月22日11:00 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=0822-1100&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0822_1100.mp4"
       }
     ],
     "aiConsultations": [
@@ -329,8 +326,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「Kim」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1222228481"
+        "title": "2026年08月29日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=0829_20261026&file=%E3%82%B5%E3%83%BC%E3%83%96%E7%B7%B4%E7%BF%92_0829.mp4"
       }
     ],
     "aiConsultations": [
@@ -350,8 +347,8 @@
     "comment": "サーブとレシーブを交互に交代しながら練習を行いました。本日のベストサーバーは、「なが」さんをＡＩが選出しました。詳細は、リンクでご確認ください。",
     "videos": [
       {
-        "title": "サーブ動画(Vimeo)",
-        "url": "https://vimeo.com/1222415001"
+        "title": "2026年08月30日 サーブ練習会",
+        "url": "https://horaken.github.io/tennis-base/video-player/?id=0830_20261026&file=%E3%82%B5%E3%83%BC%E3%83%96%E5%8B%95%E7%94%BB_0830.mp4"
       }
     ],
     "aiConsultations": [
@@ -737,6 +734,16 @@
         "title": "サーブ動画のＡＩ診断(Gemini)",
         "url": "https://share.gemini.google/uYiJEZwMXtCJ"
       }
+    ],
+    "participantNames": [
+      "まつ",
+      "みやざき",
+      "UEKI",
+      "Kiyo",
+      "ゆう",
+      "いーじま",
+      "なかしゅん",
+      "まさひろ"
     ]
   },
   {
@@ -779,6 +786,16 @@
         "title": "サーブ動画のＡＩ診断(Gemini)",
         "url": "https://share.gemini.google/98p1nmMMMWLh"
       }
+    ],
+    "participantNames": [
+      "Sugi",
+      "まさ",
+      "佐山",
+      "kazu0031",
+      "ながまさ",
+      "まこ",
+      "イトウソウ",
+      "てる"
     ]
   }
 ]
