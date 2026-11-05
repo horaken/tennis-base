@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font:15px/1.55 Arial,"Noto Sans JP",sans-serif;color:#1f2933;background:#f5f8fa;margin:0;padding:24px}
+    main{max-width:850px;margin:auto;background:#fff;padding:24px;border:1px solid #dce3e7;border-radius:14px}
+    h1{font-size:1.5rem;color:#15334a;margin-top:0} h2{font-size:1.1rem;color:#15334a;margin:24px 0 8px}
+    label{display:block;font-weight:700;margin:12px 0 4px} input,textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #cbd5da;border-radius:6px;font:inherit}
+    textarea{min-height:74px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+    button{border:0;border-radius:6px;padding:10px 16px;background:#2878a8;color:white;font-weight:700;font:inherit;cursor:pointer;margin:12px 8px 0 0}
+    button.secondary{background:#52616b}button:disabled{opacity:.55;cursor:wait}.note{color:#637381;font-size:.9rem}
+    #status{padding:10px;border-radius:6px;background:#eef4f8;margin:12px 0;white-space:pre-wrap}.hidden{display:none}
+    @media(max-width:600px){body{padding:10px}main{padding:16px}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>イベント管理</h1>
+  <section id="login">
+    <p class="note">管理者IDとPasswordを入力してください。</p>
+    <label for="adminId">ID</label><input id="adminId" autocomplete="username">
+    <label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password">
+    <button id="loginButton" onclick="login()">ログイン</button>
+  </section>
+  <section id="manager" class="hidden">
+    <h2>IDでイベントを検索</h2>
+    <div class="grid"><div><label for="searchId">イベントID</label><input id="searchId"></div></div>
+    <button onclick="searchEvent()">検索</button><button class="secondary" onclick="newEvent()">新規入力</button>
+    <div id="status" role="status">IDを検索してください。</div>
+    <form id="eventForm" class="hidden" onsubmit="return false">
+      <h2>イベント情報</h2>
+      <p class="note">既存イベントのIDは変更できません。参加者名と練習内容はシートと同じく区切り文字で登録します。</p>
+      <div class="grid">
+        <div><label for="id">ID *</label><input id="id" required></div>
+        <div><label for="date">開催日 *</label><input id="date" placeholder="YYYY-MM-DD" required></div>
+        <div><label for="title">イベント名 *</label><input id="title" required></div>
+        <div><label for="location">場所</label><input id="location"></div>
+        <div><label for="participants">参加人数</label><input id="participants"></div>
+        <div><label for="practiceContents">練習内容</label><input id="practiceContents"></div>
+        <div><label for="videos_title">動画タイトル</label><input id="videos_title"></div>
+        <div><label for="videos_url">動画URL</label><input id="videos_url" type="url"></div>
+        <div><label for="aiConsultations_title">AI診断タイトル</label><input id="aiConsultations_title"></div>
+        <div><label for="aiConsultations_url">AI診断URL</label><input id="aiConsultations_url" type="url"></div>
+      </div>
+      <label for="participantNames">参加者名（カンマ、読点、空白で区切る）</label><textarea id="participantNames"></textarea>
+      <label for="comment">コメント</label><textarea id="comment"></textarea>
+      <button id="saveButton" onclick="confirmSave()">保存</button>
+    </form>
+  </section>
+</main>
+<script>
+  let token = '';
+  let originalId = '';
+  const fieldNames = ['id','date','title','location','participants','practiceContents','videos_title','videos_url','aiConsultations_title','aiConsultations_url','participantNames','comment'];
+  function showStatus(message){document.getElementById('status').textContent=message;}
+  function runFailure(error){showStatus(error && error.message ? error.message : String(error));}
+  function login(){
+    const button=document.getElementById('loginButton');button.disabled=true;
+    google.script.run.withSuccessHandler(function(result){token=result.token;document.getElementById('login').classList.add('hidden');document.getElementById('manager').classList.remove('hidden');showStatus('ログインしました。イベントIDを検索してください。');})
+      .withFailureHandler(function(error){runFailure(error);button.disabled=false;})
+      .eventsAdminLogin({id:document.getElementById('adminId').value,password:document.getElementById('adminPassword').value});
+  }
+  function setForm(event, existing){fieldNames.forEach(function(name){document.getElementById(name).value=event[name]||'';});originalId=existing?event.id:'';document.getElementById('id').readOnly=!!existing;document.getElementById('eventForm').classList.remove('hidden');}
+  function searchEvent(){const id=document.getElementById('searchId').value.trim();if(!id){showStatus('イベントIDを入力してください。');return;}showStatus('検索中…');
+    google.script.run.withSuccessHandler(function(result){setForm(result.event,result.found);showStatus(result.found?'既存イベントが見つかりました。修正内容を確認してください。':'該当IDはありません。新規登録として入力してください。');})
+      .withFailureHandler(runFailure).eventsAdminFindEvent(token,id);
+  }
+  function newEvent(){document.getElementById('searchId').value='';setForm({},false);showStatus('新規イベントの情報を入力してください。');}
+  function confirmSave(){const form=document.getElementById('eventForm');if(!form.reportValidity())return;const event={};fieldNames.forEach(function(name){event[name]=document.getElementById(name).value;});
+    if(!window.confirm('この内容をeventsシートに保存します。よろしいですか？'))return;
+    const button=document.getElementById('saveButton');button.disabled=true;showStatus('保存中…');
+    google.script.run.withSuccessHandler(function(result){button.disabled=false;document.getElementById('searchId').value=event.id;showStatus((result.mode==='created'?'新規登録':'更新')+'しました。シートの'+result.row+'行目に保存しました。');})
+      .withFailureHandler(function(error){button.disabled=false;runFailure(error);}).eventsAdminSaveEvent(token,event,originalId);
+  }
+</script>
+</body>
+</html>

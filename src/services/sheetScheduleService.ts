@@ -78,9 +78,12 @@ export const parseCsvText = (csvText: string): string[][] => {
  * Fetch a specific sheet's CSV data
  */
 async function fetchSheetCsv(spreadsheetId: string, sheetName: string): Promise<string[][] | null> {
-  const url = `https://docs.google.com/spreadsheets/d/${encodeURIComponent(
+  const sheetPath = `/spreadsheets/d/${encodeURIComponent(
     spreadsheetId
   )}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}&_v=${Date.now()}`;
+  const url = import.meta.env.DEV
+    ? `/__google_sheets${sheetPath}`
+    : `https://docs.google.com${sheetPath}`;
 
   try {
     const res = await fetch(url);
@@ -181,7 +184,6 @@ export const fetchEventsFromSheet = async (
   const vUrlIdx = headers.indexOf('videos_url');
   const aiTitleIdx = headers.indexOf('aiconsultations_title');
   const aiUrlIdx = headers.indexOf('aiconsultations_url');
-  const statusIdx = headers.indexOf('status');
 
   const items: EventItem[] = [];
 
@@ -192,16 +194,13 @@ export const fetchEventsFromSheet = async (
     // Ignore rows without ID (such as template/copy-paste sample rows)
     if (!id) continue;
 
-    const status = (r[statusIdx >= 0 ? statusIdx : 11] || '').trim();
-    if (status === '下書き' || status === '非公開') continue;
-
     const date = (r[dateIdx >= 0 ? dateIdx : 1] || '').replace(/\//g, '-').trim();
     const title = (r[titleIdx >= 0 ? titleIdx : 2] || '').trim();
     const location = (r[locIdx >= 0 ? locIdx : 3] || '').trim();
     const participants = (r[partIdx >= 0 ? partIdx : 4] || '').trim();
 
-    // Parse participant names from D column (comma or whitespace separated)
-    const rawPartNames = (r[partNamesIdx >= 0 ? partNamesIdx : -1] || '').trim();
+    // Parse participant names by the participantNames header so column order can change.
+    const rawPartNames = (partNamesIdx >= 0 ? r[partNamesIdx] : '')?.trim() || '';
     const parsedNames = rawPartNames
       ? rawPartNames
           .split(/[,、\s\u3000\n]+/)

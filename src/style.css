@@ -697,6 +697,27 @@ h2 {
   margin: 0;
 }
 
+.admin-button-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  color: #52616b;
+  background: rgb(255 255 255 / 55%);
+  border: 1px solid #cbd5da;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a.admin-button:hover { color: var(--navy); background: white; }
+.admin-button-disabled { opacity: .65; cursor: not-allowed; }
+
 .button-accent {
   background: #1e6952;
 }

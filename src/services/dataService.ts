@@ -85,14 +85,16 @@ export const fetchEventsData = async (): Promise<EventItem[]> => {
     baseEvents = (rawEvents as unknown as EventItem[]) || [];
   }
 
-  // Merge sheet-only events
+  // Treat the sheet as the source of truth for IDs it contains, while keeping
+  // JSON as a fallback for events that have not been copied to the sheet yet.
   const baseIds = new Set(baseEvents.map((event) => event.id));
   const sheetOnlyEvents = sheetEvents.filter((event) => !baseIds.has(event.id));
   const combined = [...baseEvents, ...sheetOnlyEvents];
 
   const sheetEventMap = new Map(sheetEvents.map((e) => [e.id, e]));
 
-  // 4. Enrich every event with participantNames from participantMap and sheetEvents
+  // 4. Let sheet fields override stale JSON values for matching IDs, then enrich
+  // participant names from both sources.
   return combined.map((event) => {
     const fromPartSheet =
       participantMap.get(event.id) ||
@@ -115,6 +117,7 @@ export const fetchEventsData = async (): Promise<EventItem[]> => {
 
     return {
       ...event,
+      ...(fromSheetEvent || {}),
       participantNames: Array.from(mergedNames),
     };
   });

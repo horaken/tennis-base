@@ -7,6 +7,7 @@ import { TennisRacketDecoration, TennisBallDecoration } from '../components/Tenn
 
 export const HomePage: React.FC = () => {
   const [eventsList, setEventsList] = useState<EventItem[]>(() => getEventsData());
+  const adminUrl = import.meta.env.VITE_ADMIN_WEB_APP_URL?.trim();
 
   useEffect(() => {
     let isMounted = true;
@@ -46,6 +47,13 @@ export const HomePage: React.FC = () => {
           </p>
 
           <div className="hero-buttons">
+            <p className="admin-button-row">
+              {adminUrl ? (
+                <a className="admin-button" href={`${adminUrl}${adminUrl.includes('?') ? '&' : '?'}admin=1`} target="_blank" rel="noreferrer">管理者用</a>
+              ) : (
+                <span className="admin-button admin-button-disabled" title="VITE_ADMIN_WEB_APP_URL を設定してください">管理者用</span>
+              )}
+            </p>
             <p>
               <Link className="button" to="/schedule">
                 今後の開催予定を見る（開催予定表）

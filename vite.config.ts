@@ -8,14 +8,16 @@ export default defineConfig({
     react(),
     {
       name: 'html-dev-transform',
-      apply: 'serve',
-      transformIndexHtml(html) {
-        return html
-          .replace(/<link rel="stylesheet" crossorigin href="\.\/assets\/index\.css">/, '')
-          .replace(
-            /<script type="module" crossorigin src="\.\/assets\/index\.js"><\/script>/,
-            '<script type="module" src="/src/main.tsx"></script>'
-          );
+      transformIndexHtml: {
+        order: 'pre',
+        handler(html) {
+          return html
+            .replace(/<link rel="stylesheet" crossorigin href="\.\/assets\/index\.css">\s*/, '')
+            .replace(
+              /<script type="module" crossorigin src="\.\/assets\/index\.js"><\/script>/,
+              '<script type="module" src="/src/main.tsx"></script>'
+            );
+        },
       },
     },
   ],
@@ -32,5 +34,12 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
+    proxy: {
+      '/__google_sheets': {
+        target: 'https://docs.google.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/__google_sheets/, ''),
+      },
+    },
   },
 });
