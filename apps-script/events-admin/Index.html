@@ -48,6 +48,7 @@
       <label for="participantNames">参加者名（カンマ、読点、空白で区切る）</label><textarea id="participantNames"></textarea>
       <label for="comment">コメント</label><textarea id="comment"></textarea>
       <button id="saveButton" onclick="confirmSave()">保存</button>
+      <p id="saveStatus" class="note" role="status"></p>
     </form>
   </section>
 </main>
@@ -56,6 +57,7 @@
   let originalId = '';
   const fieldNames = ['id','date','title','location','participants','practiceContents','videos_title','videos_url','aiConsultations_title','aiConsultations_url','participantNames','comment'];
   function showStatus(message){document.getElementById('status').textContent=message;}
+  function showSaveStatus(message){document.getElementById('saveStatus').textContent=message;}
   function errorMessage(error){return error && error.message ? error.message : String(error);}
   function runFailure(error){showStatus(errorMessage(error));}
   function login(){
@@ -72,9 +74,9 @@
   function newEvent(){document.getElementById('searchId').value='';setForm({},false);showStatus('新規イベントの情報を入力してください。');}
   function confirmSave(){const form=document.getElementById('eventForm');if(!form.reportValidity())return;const event={};fieldNames.forEach(function(name){event[name]=document.getElementById(name).value;});
     if(!window.confirm('この内容をeventsシートに保存します。よろしいですか？'))return;
-    const button=document.getElementById('saveButton');button.disabled=true;showStatus('保存中…');
-    google.script.run.withSuccessHandler(function(result){button.disabled=false;document.getElementById('searchId').value=event.id;showStatus((result.mode==='created'?'新規登録':'更新')+'しました。シートの'+result.row+'行目に保存しました。');})
-      .withFailureHandler(function(error){button.disabled=false;runFailure(error);}).eventsAdminSaveEvent(token,event,originalId);
+    const button=document.getElementById('saveButton');button.disabled=true;showStatus('保存中…');showSaveStatus('保存中…');
+    google.script.run.withSuccessHandler(function(result){button.disabled=false;document.getElementById('searchId').value=event.id;const message=(result.mode==='created'?'新規登録':'更新')+'しました。シートの'+result.row+'行目に保存しました。';showStatus(message);showSaveStatus(message);})
+      .withFailureHandler(function(error){button.disabled=false;runFailure(error);showSaveStatus(errorMessage(error));}).eventsAdminSaveEvent(token,event,originalId);
   }
 </script>
 </body>

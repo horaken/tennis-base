@@ -61,7 +61,9 @@ function eventsAdminSaveEvent(token, event, originalId) {
 
     const row = foundRows.length ? table.rows[foundRows[0] - 1].slice() : Array(table.headers.length).fill('');
     const values = eventsAdminEventToRow_(event);
-    Object.keys(values).forEach(function (header) { row[table.index[header]] = values[header]; });
+    Object.keys(values).forEach(function (header) {
+      row[table.index[header.toLowerCase()]] = values[header];
+    });
     if (foundRows.length) {
       row[idCol] = id;
       sheet.getRange(foundRows[0], 1, 1, table.headers.length).setValues([row]);
