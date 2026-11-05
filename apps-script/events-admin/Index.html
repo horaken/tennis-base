@@ -23,6 +23,7 @@
     <label for="adminId">ID</label><input id="adminId" autocomplete="username">
     <label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password">
     <button id="loginButton" onclick="login()">ログイン</button>
+    <p id="loginStatus" class="note" role="status"></p>
   </section>
   <section id="manager" class="hidden">
     <h2>IDでイベントを検索</h2>
@@ -55,11 +56,12 @@
   let originalId = '';
   const fieldNames = ['id','date','title','location','participants','practiceContents','videos_title','videos_url','aiConsultations_title','aiConsultations_url','participantNames','comment'];
   function showStatus(message){document.getElementById('status').textContent=message;}
-  function runFailure(error){showStatus(error && error.message ? error.message : String(error));}
+  function errorMessage(error){return error && error.message ? error.message : String(error);}
+  function runFailure(error){showStatus(errorMessage(error));}
   function login(){
     const button=document.getElementById('loginButton');button.disabled=true;
     google.script.run.withSuccessHandler(function(result){token=result.token;document.getElementById('login').classList.add('hidden');document.getElementById('manager').classList.remove('hidden');showStatus('ログインしました。イベントIDを検索してください。');})
-      .withFailureHandler(function(error){runFailure(error);button.disabled=false;})
+      .withFailureHandler(function(error){document.getElementById('loginStatus').textContent=errorMessage(error);button.disabled=false;})
       .eventsAdminLogin({id:document.getElementById('adminId').value,password:document.getElementById('adminPassword').value});
   }
   function setForm(event, existing){fieldNames.forEach(function(name){document.getElementById(name).value=event[name]||'';});originalId=existing?event.id:'';document.getElementById('id').readOnly=!!existing;document.getElementById('eventForm').classList.remove('hidden');}
